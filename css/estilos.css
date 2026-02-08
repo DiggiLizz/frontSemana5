@@ -18,8 +18,8 @@ body {
     min-height: 100vh;            /* Garantiza que el cuerpo mida al menos el alto de la pantalla */
     background-color: #0B1220;    /* Color de fondo oscuro de respaldo */
     background-image:             /* Crea un degradado doble: uno oscuro para legibilidad y otro de colores (violeta a azul) */
-        linear-gradient(0deg, rgba(3, 7, 18, 0.7), rgba(3, 7, 18, 0.7)),
-        linear-gradient(45deg, #8B5CF6 0%, #4A90E2 100%); 
+        linear-gradient(0deg, rgba(11, 18, 32, 0.4), rgba(11, 18, 32, 0.4)), /* Bajamos a 0.4 para que respire el color */
+        linear-gradient(45deg, #8B5CF6 0%, #4A90E2 100%);
     background-attachment: fixed;  /* Mantiene el fondo quieto mientras se mueve pantalla */
     background-size: cover;        /* Ajusta el fondo para cubrir toda la pantalla */
     background-repeat: no-repeat;  /* Evita que el fondo se duplique */
@@ -137,7 +137,8 @@ body {
 .modal-body p, .card-text, p, li {
     color: #a39eb0 !important;   /* Gris azulado para el texto largo: el más cómodo para leer mucho tiempo */
 }
-/* 4) NAVEGACIÓN */
+
+/* 6) NAVEGACIÓN */
 .nav__list {
     display: flex;               /* Activa Flexbox para los enlaces */
     flex-direction: column;      /* Enlaces en lista vertical para móviles */
@@ -153,13 +154,13 @@ body {
     transition: all 0.3s ease; /* Transición para los links */
 }
 
-/* 5) Efecto para los enlaces del menú individualmente */
+/* 7) Efecto para los enlaces del menú individualmente */
 .nav__list a:hover {
     color: #8B5CF6;           /* Cambia de azul a violeta */
     letter-spacing: 1px;      /* Las letras se separan un poquito */
 }
 
-/* 6) ===== COMPONENTES DE LA PÁGINA DE INICIO (INDEX) ===== */
+/* 8) ===== COMPONENTES DE LA PÁGINA DE INICIO (INDEX) ===== */
 
 .hero-container {
     width: 100%;                 /* Contenedor de ancho completo */
@@ -186,7 +187,7 @@ body {
     margin-top: 2rem;                     /* Separación con la imagen superior */
 }
 
-/* 7) Botón llamativo para las categorías */
+/* 9) Botón llamativo para las categorías */
 .btn-primary {
     display: inline-block;       /* Permite aplicar padding y márgenes correctamente */
     background: #8B5CF6;         /* Fondo violeta */
@@ -205,7 +206,7 @@ a.btn-primary:hover {
     transform: translateY(-2px);    /* El botón sube un poquito */
 }
 
-/* 8) FOOTER */
+/* 10) FOOTER */
 .footer { 
     padding: 2rem;                       /* Mucho espacio interno */
     text-align: center;                  /* Centra los créditos y contacto */
@@ -214,7 +215,37 @@ a.btn-primary:hover {
     margin-top: 2rem;                    /* Separa el footer del contenido anterior */
 }
 
-/* 9) RESPONSIVIDAD (TABLETS Y PC) */ 
+/* 11) CORRECCIÓN DE MODALES */
+
+/* Fondo oscuro y borde morado para la ventana (Modal) */
+.modal-content {
+    background-color: #111827 !important; 
+    border: 1px solid #8B5CF6 !important; 
+    border-radius: 1rem !important;
+}
+
+/* Color del título del modal */
+.modal-title {
+    color: #9283a8 !important; 
+    font-weight: bold;
+}
+
+/* Color de los textos (Descripción y Opinión) */
+.modal-body, .modal-body p, .modal-body strong {
+    color: #a39eb0 !important; 
+}
+
+/* Líneas que separan el título y el pie del modal */
+.modal-header, .modal-footer {
+    border-color: #2B3753 !important;
+}
+
+/* Cambia la X de cerrar a blanco para que se vea */
+.btn-close {
+    filter: invert(1) grayscale(1) brightness(2); 
+}
+
+/* 12) RESPONSIVIDAD (TABLETS Y PC) */ 
 
 /* Tablets (desde 768px de ancho) */
 @media screen and (min-width: 768px) {
