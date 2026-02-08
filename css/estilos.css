@@ -216,3 +216,22 @@ a.btn-primary:hover {
         flex-direction: column; /* Vuelve a vertical dentro de la barra lateral de PC */
     }
 }
+
+/* --- AJUSTES PARA FOTOSENSIBILIDAD EN RECUADROS --- */
+
+/* fondo de las tarjetas y modales para que sean lilas */
+.card, .modal-content, .bg-dark {
+    background-color: #3B2463 !important; /* Lila intermedio, más suave que el fondo */
+    border: 1px solid #6D44B8 !important; /* Borde lila definido para guiar la vista */
+    color: #c0a8eb !important; /* Texto lila muy claro, evita el blanco puro */
+}
+
+/* Ajuste para que los títulos tengan un color lila */
+.text-info, h1, h3, h5, .card-title, .modal-title {
+    color: #8c73bb !important;
+}
+
+/* enlaces en el footer y textos secundarios sean legibles */
+.footer a, .card-text {
+    color: #d38bf7 !important;
+}
