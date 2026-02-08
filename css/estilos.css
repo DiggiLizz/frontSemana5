@@ -1,0 +1,226 @@
+/* =========================================================
+              Videojuegos y Anime Sekhmet 
+========================================================= */
+
+/* 1) CONFIGURACIÓN BASE */
+* { 
+    box-sizing: border-box;      /* incluye el padding y bordes en el ancho total del elemento */
+}
+
+html { 
+    scroll-behavior: smooth; 
+    height: 100%;                /* asegura que el documento ocupe todo el alto disponible */
+}
+
+body {
+    margin: 0;                    /* Elimina los márgenes por defecto del navegador */
+    padding: 0;                   /* Elimina el relleno por defecto */
+    min-height: 100vh;            /* Garantiza que el cuerpo mida al menos el alto de la pantalla */
+    background-color: #0B1220;    /* Color de fondo oscuro de respaldo */
+    background-image:             /* Crea un degradado doble: uno oscuro para legibilidad y otro de colores (violeta a azul) */
+        linear-gradient(0deg, rgba(3, 7, 18, 0.7), rgba(3, 7, 18, 0.7)),
+        linear-gradient(45deg, #8B5CF6 0%, #4A90E2 100%); 
+    background-attachment: fixed;  /* Mantiene el fondo quieto mientras se mueve pantalla */
+    background-size: cover;        /* Ajusta el fondo para cubrir toda la pantalla */
+    background-repeat: no-repeat;  /* Evita que el fondo se duplique */
+    background-position: center;   /* Centra la imagen/degradado de fondo */
+    color: #B6C0DD;                /* Color de texto principal (evita sensibilidad a la luz) */
+    font-family: system-ui, -apple-system, sans-serif;     /* Usa la fuente del sistema para mayor rapidez */
+    line-height: 1.6;              /* Espaciado entre líneas para mejor lectura */
+}
+
+/* 2) ESTRUCTURA GRID (LAYOUT) */
+.layout {
+    display: grid;                  /* Activa el sistema de rejilla */
+    grid-template-columns: 1fr;     /* Por defecto (móvil), una sola columna ancha */
+    grid-template-areas:   /* Define el orden: primero navegación, luego contenido principal */         
+        "nav"
+        "main";                     
+}
+
+.sidebar { 
+    grid-area: nav;                     /* Asigna este bloque al área "nav" del grid */
+    background: rgba(15, 23, 42, 0.9);  /* Fondo oscuro semitransparente */
+    padding: 1.5rem;                    /* Espacio interno de 1.5 rem */
+    text-align: center;                 /* Centra el texto dentro del menú */
+    border-bottom: 1px solid #2B3753;   /* Línea sutil decorativa inferior */
+    transition: all 0.5s ease;            /* transición aquí para que el efecto sea suave */
+}
+
+/* Efecto para la barra lateral completa */
+.sidebar:hover {
+    background: rgba(25, 33, 52, 0.95) !important; /* Se aclara ligeramente */
+    border-bottom: 1px solid #8B5CF6;              /* El borde inferior brilla en violeta en móvil */
+}
+
+.content, .main { 
+    grid-area: main;               /* Asigna este bloque al área "main" del grid */
+    padding: 1.5rem;               /* Espacio interno para que el contenido no toque los bordes */
+    display: flex;                 /* Activa Flexbox para alinear elementos hijos */
+    flex-direction: column;        /* Apila los elementos uno sobre otro (título, imagen, texto) */
+    align-items: center;           /* Centra los objetos (imágenes, cajas) horizontalmente */
+    text-align: center;            /* Centra el texto (letras) horizontalmente */
+    width: 100%;                   /* Asegura que ocupe todo el ancho disponible */
+}
+
+/* 3) TARJETAS (MÓVIL - 1 COLUMNA) */
+.cards {
+    display: grid;                 /* Usa grid interno para las tarjetas */
+    grid-template-columns: 1fr;    /* Una columna en celulares */
+    gap: 1.5rem;                   /* Espacio de separación entre cada tarjeta */
+    width: 100%;                   /* Ocupa todo el ancho */
+    max-width: 100%;               /* No permite que se desborde */
+}
+
+.card {
+    background: #111827;           /* Fondo gris muy oscuro para la tarjeta */
+    border: 1px solid #2B3753;     /* Borde sutil */
+    border-radius: 1rem;           /* Bordes redondeados */
+    padding: 1.2rem;               /* Espacio interno */
+    cursor: pointer;               /* Cambia el cursor a "mano" para indicar que es clickeable */
+    transition: transform 0.2s ease; /* Suaviza la animación de cambio de tamaño */
+}
+
+.card:hover {
+    border-color: #8B5CF6;         /* Al pasar el mouse, el borde se vuelve violeta */
+}
+
+.card__img {
+    width: 100%;               /* La imagen ocupa todo el ancho de la tarjeta */
+    height: 180px;             /* Altura fija para mantener uniformidad en el listado */
+    object-fit: cover;         /* Corta la imagen para que rellene el espacio sin deformarse */
+    border-radius: 0.6rem;     /* Bordes redondeados en la imagen */
+}
+
+.card-info { 
+    display: none;             /* Oculta la información detallada por defecto */
+    margin-top: 1rem;          /* Espacio arriba del texto oculto */
+}
+
+/* Lógica para abrir tarjeta con JS */
+.card.open .card-info { 
+    display: block;           /* Muestra el texto cuando la tarjeta está abierta */
+}
+
+.card.open .card__img {
+    height: auto;             /* Permite que la imagen tome su altura natural al abrirse */
+    max-height: 400px;        /* Limita el crecimiento máximo */
+    object-fit: contain;      /* Muestra la imagen completa sin recortarla al abrirse */
+    background: #000;         /* Fondo negro por si la imagen es pequeña */
+}
+
+/* 4) NAVEGACIÓN */
+.nav__list {
+    display: flex;               /* Activa Flexbox para los enlaces */
+    flex-direction: column;      /* Enlaces en lista vertical para móviles */
+    gap: 0.8rem;                 /* Espacio entre cada enlace */
+    padding: 0;                  /* Quita el relleno de lista */
+    list-style: none;            /* Quita los puntos de la lista */
+}
+
+.nav__list a {
+    color: #5CB6E5;              /* Color azul claro para los links */
+    text-decoration: none;       /* Quita el subrayado */
+    font-weight: bold;           /* Letras en negrita */
+    transition: all 0.3s ease; /* Transición para los links */
+}
+
+/* fecto para los enlaces del menú individualmente */
+.nav__list a:hover {
+    color: #8B5CF6;           /* Cambia de azul a violeta */
+    letter-spacing: 1px;      /* Las letras se separan un poquito */
+}
+
+/* ===== COMPONENTES DE LA PÁGINA DE INICIO (INDEX) ===== */
+
+.hero-container {
+    width: 100%;                 /* Contenedor de ancho completo */
+    display: flex;               /* Centra la imagen usando Flexbox */
+    justify-content: center;     /* Alinea al centro horizontalmente */
+    padding: 1rem 0;             /* Espacio arriba y abajo */
+}
+
+.hero-img {
+    width: 100%;                           /* Se adapta al ancho del celular */
+    max-width: 500px;                      /* En computadoras no crece más de 500px */
+    height: auto;                          /* Mantiene la proporción */
+    border-radius: 1.5rem;                 /* Bordes muy redondeados */
+    display: block;                        /* Elimina espacios extra debajo de la imagen */
+    margin: 0 auto;                        /* Centrado extra de seguridad */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Sombra elegante para dar volumen */
+}
+
+.category-grid {
+    display: grid;                         /* Rejilla para las categorías del inicio */
+    grid-template-columns: 1fr;            /* Una columna en móvil */
+    gap: 1.5rem;                           /* Espacio entre cajas */
+    width: 100%;                           /* Ancho completo */
+    margin-top: 2rem;                     /* Separación con la imagen superior */
+}
+
+/* Botón llamativo para las categorías */
+.btn-primary {
+    display: inline-block;       /* Permite aplicar padding y márgenes correctamente */
+    background: #8B5CF6;         /* Fondo violeta */
+    color: #B6C0DD !important;   /* Texto gris forzado */
+    padding: 0.8rem 1.5rem;      /* Tamaño del botón */
+    border-radius: 0.5rem;       /* Bordes redondeados */
+    text-decoration: none;       /* Quita subrayado */
+    font-weight: bold;           /* Texto resaltado */
+    margin-top: 1rem;            /* Espacio arriba */
+    transition: background 0.3s ease; /* Animación suave para el color */
+}
+
+a.btn-primary:hover {
+    background: #7c3aed !important; /* Fondo violeta más oscuro */
+    color: #5CB6E5 !important;      /* Letras cambian a azul claro */
+    transform: translateY(-2px);    /* El botón sube un poquito */
+}
+
+/* 5) FOOTER */
+.footer { 
+    padding: 2rem;                       /* Mucho espacio interno */
+    text-align: center;                  /* Centra los créditos y contacto */
+    background: rgba(15, 23, 42, 0.9);   /* Fondo igual al menú */
+    border-top: 1px solid #2B3753;       /* Línea divisoria superior */
+    margin-top: 2rem;                    /* Separa el footer del contenido anterior */
+}
+
+/* 6) RESPONSIVIDAD (TABLETS Y PC) */ 
+
+/* Tablets (desde 768px de ancho) */
+@media screen and (min-width: 768px) {
+    .cards { grid-template-columns: repeat(2, 1fr); } /* Pasa a 2 columnas de tarjetas */
+    .nav__list { flex-direction: row; justify-content: center; gap: 2rem; } /* Menú horizontal */
+}
+
+/* PC (desde 1024px de ancho) */
+@media screen and (min-width: 1024px) {
+    .layout {
+        grid-template-columns: 280px 1fr; /* Define columna fija para menú y el resto para contenido */
+        grid-template-areas: "nav main"; /* Menú a la izquierda, contenido a la derecha */
+    }
+    .sidebar {
+        height: 100vh;                       /* Ocupa todo el alto de la pantalla */
+        position: sticky;                    /* Se queda fijo mientras haces scroll */
+        top: 0;                              /* Se pega al borde superior */
+        border-right: 1px solid #2B3753;     /* Línea divisoria derecha */
+        border-bottom: none;                 /* Quita la línea inferior que usaba en móvil */
+        display: flex;                       /* Centra el menú verticalmente */
+        flex-direction: column; 
+        justify-content: center;
+    }
+    .cards { 
+        grid-template-columns: repeat(3, 1fr); /* Pasa a 3 columnas en pantallas grandes */
+        max-width: 1200px;                     /* Evita que las tarjetas se estiren demasiado */
+    }
+    .nav__list { 
+        flex-direction: column; /* Vuelve a vertical dentro de la barra lateral de PC */
+    }
+<<<<<<< HEAD
+}
+
+
+=======
+}
+>>>>>>> c0663bc (Reparando repositorio y preparando entrega)

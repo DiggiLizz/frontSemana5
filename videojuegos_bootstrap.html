@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Videojuegos - Sekhmet (Semana 5)</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <style>
+        body { 
+            background-color: #0B1220; 
+            color: #B6C0DD; 
+            font-family: 'Segoe UI', sans-serif;
+        }
+        .card { 
+            transition: transform 0.3s ease; 
+            border-color: #2B3753; 
+            background-color: #111827; 
+        }
+        .card:hover { 
+            transform: translateY(-5px); 
+            border-color: #8B5CF6; 
+        }
+        .card-img-top { 
+            height: 250px; 
+            object-fit: cover; 
+        }
+        .modal-content { 
+            background-color: #111827; 
+            color: #B6C0DD; 
+            border: 2px solid #8B5CF6; 
+        }
+        .modal-header { border-bottom: 1px solid #2B3753; }
+        .text-info { color: #8B5CF6 !important; }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top border-bottom border-secondary">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">SEKHMET</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="videojuegos_bootstrap.html">Videojuegos</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="#">Anime</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container my-5">
+        <h1 class="text-center mb-5 display-4 fw-bold text-info">Análisis de Videojuegos</h1>
+
+        <div class="row g-4" id="contenedor-juegos">
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card h-100 text-light shadow">
+                    <img src="imagenes/PortadaSilksong.jpg" class="card-img-top" alt="SilkSong">
+                    <div class="card-body text-center">
+                        <h5 class="card-title text-info">Hollow Knight: SilkSong</h5>
+                        <button class="btn btn-outline-primary w-100 mt-3" data-bs-toggle="modal" data-bs-target="#modalSilksong">Leer Reseña Completa</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card h-100 text-light shadow">
+                    <img src="imagenes/PortadaPokemonGO.jpg" class="card-img-top" alt="Pokémon GO">
+                    <div class="card-body text-center">
+                        <h5 class="card-title text-info">Pokémon GO</h5>
+                        <button class="btn btn-outline-primary w-100 mt-3" data-bs-toggle="modal" data-bs-target="#modalPokemon">Leer Reseña Completa</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card h-100 text-light shadow">
+                    <img src="imagenes/PortadaDragonTrail.jpg" class="card-img-top" alt="Dragon Trail">
+                    <div class="card-body text-center">
+                        <h5 class="card-title text-info">Dragon Trail</h5>
+                        <button class="btn btn-outline-primary w-100 mt-3" data-bs-toggle="modal" data-bs-target="#modalDragon">Leer Reseña Completa</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card h-100 text-light shadow">
+                    <img src="imagenes/PortadaHollow.avif" class="card-img-top" alt="Hollow Knight">
+                    <div class="card-body text-center">
+                        <h5 class="card-title text-info">Hollow Knight</h5>
+                        <button class="btn btn-outline-primary w-100 mt-3" data-bs-toggle="modal" data-bs-target="#modalHollow">Leer Reseña Completa</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card h-100 text-light shadow">
+                    <img src="imagenes/PortadaKOF.avif" class="card-img-top" alt="KOF">
+                    <div class="card-body text-center">
+                        <h5 class="card-title text-info">The King of Fighters</h5>
+                        <button class="btn btn-outline-primary w-100 mt-3" data-bs-toggle="modal" data-bs-target="#modalKof">Leer Reseña Completa</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card h-100 text-light shadow">
+                    <img src="imagenes/PortadaZelda.jpg" class="card-img-top" alt="Zelda">
+                    <div class="card-body text-center">
+                        <h5 class="card-title text-info">The Legend of Zelda</h5>
+                        <button class="btn btn-outline-primary w-100 mt-3" data-bs-toggle="modal" data-bs-target="#modalZelda">Leer Reseña Completa</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div class="modal fade" id="modalSilksong" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-info">Hollow Knight: SilkSong</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <h6 class="fw-bold">Descripción:</h6>
+                    <p>Silksong expande el universo de Hollow Knight con una protagonista distinta, un mundo nuevo y mecánicas más rápidas.</p>
+                    <h6 class="fw-bold">Opinión Personal:</h6>
+                    <p>SilkSong me ha resultado muy entretenido y desafiante. Es un juego que requiere coordinación y memoria.</p>
+                    <a href="https://store.steampowered.com/app/1030300/Hollow_Knight_Silksong/" target="_blank" class="btn btn-primary">Ver en Steam</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalPokemon" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-info">Pokémon GO</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <h6 class="fw-bold">Descripción:</h6>
+                    <p>Juego de realidad aumentada que permite capturar Pokémon en el mundo real.</p>
+                    <h6 class="fw-bold">Opinión Personal:</h6>
+                    <p>Es una forma divertida de hacer ejercicio y socializar. Me gusta descubrir nuevos lugares.</p>
+                    <a href="https://pokemongo.com/es" target="_blank" class="btn btn-primary">Sitio Oficial</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalDragon" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-info">Dragon Trail</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <h6 class="fw-bold">Descripción:</h6>
+                    <p>Explora la Astroisla en este mundo abierto lleno de poderes elementales.</p>
+                    <h6 class="fw-bold">Opinión Personal:</h6>
+                    <p>Permite conocer nuevas culturas al jugar con gente de otros países. Muy recomendado.</p>
+                    <a href="https://dt.wattgaming.com/" target="_blank" class="btn btn-primary">Sitio Oficial</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalHollow" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-info">Hollow Knight</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <h6 class="fw-bold">Descripción:</h6>
+                    <p>El metroidvania clásico donde exploras el reino caído de Hallownest.</p>
+                    <h6 class="fw-bold">Opinión Personal:</h6>
+                    <p>Es increíble y desafiante. Me falta poco para completarlo al 100%.</p>
+                    <a href="https://hollow-knight.softonic.com/" target="_blank" class="btn btn-primary">Más información</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalKof" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-info">The King of Fighters</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <h6 class="fw-bold">Descripción:</h6>
+                    <p>Serie mítica de lucha por equipos de SNK con una gran historia.</p>
+                    <h6 class="fw-bold">Opinión Personal:</h6>
+                    <p>Desde el arcade hasta hoy, me encanta realizar los combos de cada personaje.</p>
+                    <a href="https://www.snk-corp.co.jp/es-es/games/kof-portal/series/" target="_blank" class="btn btn-primary">Portal KOF</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalZelda" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-info">The Legend of Zelda</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <h6 class="fw-bold">Descripción:</h6>
+                    <p>Las heroicas aventuras de Link para salvar Hyrule y a la Princesa Zelda.</p>
+                    <h6 class="fw-bold">Opinión Personal:</h6>
+                    <p>Me encanta jugarlo en 3DS. Esa sensación de exploración libre es única.</p>
+                    <a href="https://zelda.nintendo.com/" target="_blank" class="btn btn-primary">Sitio Oficial</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-dark text-center py-5 border-top border-secondary mt-5">
+        <div class="container">
+            <p>© 2026 Videojuegos <strong>Sekhmet</strong></p>
+            <p>Contacto: <a href="mailto:lili.zapata@duocuc.cl" class="text-info text-decoration-none">lili.zapata@duocuc.cl</a></p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

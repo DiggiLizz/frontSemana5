@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animes - Sekhmet (Bootstrap Semana 4)</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <style>
+        body { 
+            background-color: #0B1220; 
+            color: #B6C0DD; 
+            font-family: 'Segoe UI', sans-serif;
+        }
+        /* Estilo de las tarjetas */
+        .card { 
+            transition: transform 0.3s ease; 
+            border-color: #2B3753; 
+            background-color: #111827; 
+        }
+        .card:hover { 
+            transform: translateY(-5px); 
+            border-color: #8B5CF6; 
+        }
+        .card-img-top { 
+            height: 250px; 
+            object-fit: cover; 
+        }
+        /* Estilo de los modales */
+        .modal-content { 
+            background-color: #111827; 
+            color: #B6C0DD; 
+            border: 2px solid #8B5CF6; 
+        }
+        .modal-header { border-bottom: 1px solid #2B3753; }
+        .modal-footer { border-top: 1px solid #2B3753; }
+        .text-info { color: #8B5CF6 !important; }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top border-bottom border-secondary">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">SEKHMET</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="videojuegos_bootstrap.html">Videojuegos</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="#">Anime</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container my-5">
+        <h1 class="text-center mb-5 display-4 fw-bold text-info">Reseñas de Anime</h1>
+
+        <div class="row g-4">
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card h-100 text-light shadow">
+                    <img src="imagenes/PortadaNGE.jpg" class="card-img-top" alt="Evangelion">
+                    <div class="card-body text-center">
+                        <h5 class="card-title text-info">Neon Genesis Evangelion</h5>
+                        <button class="btn btn-outline-primary w-100 mt-3" data-bs-toggle="modal" data-bs-target="#modalEva">Leer Reseña Completa</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card h-100 text-light shadow">
+                    <img src="imagenes/PortadaEstanArrestados.jpg" class="card-img-top" alt="Estan Arrestados">
+                    <div class="card-body text-center">
+                        <h5 class="card-title text-info">Están Arrestados</h5>
+                        <button class="btn btn-outline-primary w-100 mt-3" data-bs-toggle="modal" data-bs-target="#modalArrestados">Leer Reseña Completa</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card h-100 text-light shadow">
+                    <img src="imagenes/PortadaZenki.jpg" class="card-img-top" alt="Zenki">
+                    <div class="card-body text-center">
+                        <h5 class="card-title text-info">Zenki</h5>
+                        <button class="btn btn-outline-primary w-100 mt-3" data-bs-toggle="modal" data-bs-target="#modalZenki">Leer Reseña Completa</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card h-100 text-light shadow">
+                    <img src="imagenes/PortadaRanma12.jpg" class="card-img-top" alt="Ranma">
+                    <div class="card-body text-center">
+                        <h5 class="card-title text-info">Ranma 1/2</h5>
+                        <button class="btn btn-outline-primary w-100 mt-3" data-bs-toggle="modal" data-bs-target="#modalRanma">Leer Reseña Completa</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card h-100 text-light shadow">
+                    <img src="imagenes/PortadaEscaflowne.jpg" class="card-img-top" alt="Escaflowne">
+                    <div class="card-body text-center">
+                        <h5 class="card-title text-info">Escaflowne</h5>
+                        <button class="btn btn-outline-primary w-100 mt-3" data-bs-toggle="modal" data-bs-target="#modalEsca">Leer Reseña Completa</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card h-100 text-light shadow">
+                    <img src="imagenes/PortadaDigimon.avif" class="card-img-top" alt="Digimon">
+                    <div class="card-body text-center">
+                        <h5 class="card-title text-info">Digimon Adventure</h5>
+                        <button class="btn btn-outline-primary w-100 mt-3" data-bs-toggle="modal" data-bs-target="#modalDigi">Leer Reseña Completa</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div class="modal fade" id="modalEva" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-info">Neon Genesis Evangelion</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <h6 class="fw-bold">Descripción Original:</h6>
+                    <p>En el año 2015 la humanidad intenta recuperarse del «Segundo impacto», una catástrofe provocada por la caída de un meteorito en la Antártida años atrás. Tras sobrevivir al deshielo de los polos y a una inmediata sucesión de guerras sin fin, los seres humanos deben enfrentarse a un nuevo y mortal peligro. Unos misteriosos seres denominados Ángeles aparecen de improvisto llevando la destrucción por donde pasan. Para frenar esta amenaza, el científico Gendoh Ikari ha desarrollado los Evangelion, gigantescos robots que se convierten en la última línea de defensa para la humanidad. Uno de los primeros pilotos escogidos recibe el nombre de «Tercer Elegido». Shinji Ikari, hijo que Gendoh abandonó, se verá obligado a sondear las profundidades de sus propios recursos internos y así encontrar el valor y la fuerza, no sólo para luchar… sino para sobrevivir o arriesgarse a perderlo todo.</p>
+                    <h6 class="fw-bold">Opinión Personal:</h6>
+                    <p>Es anime clasico de los 90s, con robots (que al final no lo son), angeles apocalipticos, adolescentes con problemas psicológicos de distinta indole. Tematicas existencialistas que te dejan pensando, realmente que es lo que pasó. La remasterización de este anime, también la encuntro buena. Es un anime que se debe ver con calma y atención a los detalles.</p>
+                    <a href="https://www.youtube.com/watch?v=_FmUpViWDX4" target="_blank" class="btn btn-primary">Ver video en YouTube</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalArrestados" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-info">Están Arrestados</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <h6 class="fw-bold">Descripción Original:</h6>
+                    <p>Natsumi Tsujimoto, una joven policía, se traslada a la prefectura de Bokuto. Allí conoce a Miyuki, su nueva compañera. En un inicio, ambas no se llevan bien porque Natsumi cree que son demasiado distintas para congeniar, pero no tardan mucho en aprender a trabajar como un equipo. Quieran o no hay cosas que también las unen y, tras su primera misión, se da cuenta de que Miyuki puede ser un gran apoyo. Después de esto, su día a día se convierte en una rutina donde hay un poco de todo: ayudar a gatos y niños en peligro, detener a infractores, perseguir criminales y hasta prestar atención a los asuntos personales. Cada día es una novedad, así que le echarán ganas para afrontarlo.</p>
+                    <h6 class="fw-bold">Opinión Personal:</h6>
+                    <p>Un anime a mi gusto genial, buen desarrollo de los personajes, muy comico sin ser burdo, diversas situaciones que te hacen reír. En si es un anime con una historia completa, pero la mayoria de los capitulos tienen temática, ahora para poder entender bien algunas de las relaciones interpersonales, es necesario ver varios capítulos para podor entender bien como se desarrollaron. Los OVAs son igualmente entrenido, y la tercera temporada, si alguien la tiene completa, me gustaría verla.</p>
+                    <a href="https://www.youtube.com/watch?v=qsE_DbAjYOw" target="_blank" class="btn btn-primary">Ver video en YouTube</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalZenki" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-info">Zenki</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <h6 class="fw-bold">Descripción Original:</h6>
+                    <p>La historia nos cuenta las aventuras de Cherry Night cuyo antepasado era conocidos por ser un poderoso hechicero, Ozuno combatía con los demonios con la ayuda de su fiel demonio Zenki, después de cumplir con su misión al ver que Zenki se volvía más y más violento, decide sellarlo hasta que sus servicios sean requeridos de nuevo. Luego de mucho tiempo de tranquilidad, en una ciudad donde vivía el gran hechicero Ozuno, dos monjes en busca de poder, deciden usurpar un templo con un sello en el, para encontrar ese nuevo poder. Dentro se encontraba a lo que se llama «las semillas del mal», son semillas que con los deseos de personas malas, se alimentan de ellos y los transforman en demonios. Estos demonios primero intentan atacar a Cherry y a su familia, ella tenía poco conocimiento de la magia, pero al verse ella y su abuela en peligro, el pilar donde se encontraba sellado el demonio Zenki, le otorga un brazalete con el cual despierta al demonio.</p>
+                    <h6 class="fw-bold">Opinión Personal:</h6>
+                    <p>Este anime tambíen tiene escenas muy comicas a mi gutso, pero tambien tiene su toque de magia y acción. Zenki es un demonio muy poderoso que protege a Cherry, aunque la hace rabiar muchas veces porque no le hace caso. Muy buenos villanos, y buena trama en general.</p>
+                    <a href="https://www.youtube.com/watch?v=tTyqk9yArqw" target="_blank" class="btn btn-primary">Ver video en YouTube</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalRanma" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-info">Ranma 1/2</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <h6 class="fw-bold">Descripción Original:</h6>
+                    <p>Ranma 1/2 es una serie de anime que sigue las aventuras de Ranma Saotome, un joven que tras caer en un pozo mágico se convierte en una chica. La historia combina comedia, acción y romance mientras Ranma intenta resolver sus problemas con la ayuda de su novia Akane.</p>
+                    <h6 class="fw-bold">Opinión Personal:</h6>
+                    <p>Este anime, trae mezcla de artes marciales, comedia y romance. Las situaciones cómicas que surgen de la transformación de Ranma son muy entretenidas, esta muy presente el echi, por lo que se debe tener cuidado con los nños. Si te gustan las artes marciales y la comedia, este anime es para ti.</p>
+                    <a href="https://www.youtube.com/watch?v=pZ3qsLzssKI" target="_blank" class="btn btn-primary">Ver video en YouTube</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalEsca" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-info">Escaflowne</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <h6 class="fw-bold">Descripción Original:</h6>
+                    <p>Al igual que casi todo el mundo, Hitomi Kanzaki cree ser alguien normal. Ella es una estudiante y miembro del club de atletismo de su instituto. Sin embargo, aparte de amar el deporte también está enamorada del capitán, Akira Amano. Durante una práctica, Hitomi contempla unas visiones sobre un desconocido mundo en guerra. El incidente parecía un simple sueño, así que decidió olvidarlo. Más adelante, al enterarse de la marcha del capitán del país, Hitomi decide declararse y pedirle su primer beso si logra bajar de los 13 segundos en una carrera. Lamentablemente la aparición repentina de un joven misterioso y un dragón impide a Hitomi terminar la carrera. Cuando este joven, Van Fanel, logra derrotar al monstruo, Hitomi es teletransportada junto a él hacia otro mundo que recibe el nombre de Gaia. En esa tierra mágica, Hitomi, junto a Van, se verán implicados en un conflicto que decidirá el destino de Gaia.</p>
+                    <h6 class="fw-bold">Opinión Personal:</h6>
+                    <p>Anime que mezcla mechas, fantasía y romance. Solo se que me gusta, pero ya van varios años desde que lo vi por primera vez, por lo que no pordria dar una opinión mas actualizada. Lo que si para que lo veas, te dejo la versión remasterizada para que puedas ver. Si logras encontrar la original, podras ver la difencia ademas de la calidad de la imagen, como eran dibujados hace años los personajes.</p>
+                    <a href="https://www.youtube.com/watch?v=pU-k30r9jeE" target="_blank" class="btn btn-primary">Ver video en YouTube</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalDigi" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-info">Digimon Adventure</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <h6 class="fw-bold">Descripción Original:</h6>
+                    <p>La historia se centra en siete niños de Japón, que son transportados al Mundo digital después de encontrar unos Digivice y ser arrastrados por una "gran ola", llegando así a la Isla File. Allí encuentran a sus compañeros Digimon, y con su ayuda, aprenderán a sobrevivir pese a las adversidades de estar en un mundo desconocido. Conforme avanza la serie, descubren que son los Niños elegidos. A mitad de la serie se integra el octavo niño elegido con su Digimon. Los ocho niños tendrán que luchar contra las fuerzas de la oscuridad que quieren apoderarse del mundo digital y el mundo real.</p>
+                    <h6 class="fw-bold">Opinión Personal:</h6>
+                    <p>Primer anime de la franquicia Digimon, y a gusto personal, el mejor de todos. Cada franquicia tiene su encanto, pero este es el que tiene la mejor historia, desarrollo de personajes y la mejor música. También tocan temas sensibles como la pérdida, la amistad y el crecimiento personal. Y como todo anime de los 90s, tiene su toque de comedia que no está de más.</p>
+                    <a href="https://www.youtube.com/watch?v=7PXb7ZHwITg" target="_blank" class="btn btn-primary">Ver video en YouTube</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-dark text-center py-5 border-top border-secondary mt-5">
+        <p>© 2026 Sekhmet Anime | Semana 4 Bootstrap 5</p>
+        <p>Contacto: <a href="mailto:lili.zapata@duocuc.cl" class="text-info text-decoration-none">lili.zapata@duocuc.cl</a></p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

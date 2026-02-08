@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Videojuegos - Sekhmet</title>
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+    <div class="layout">
+        
+        <aside class="sidebar">
+            <h2>Menú</h2>
+            <nav>
+                <ul class="nav__list">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="videojuegos.html">Videojuegos</a></li>
+                    <li><a href="animes.html">Anime</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+        </aside>
+        
+        <main class="content">
+            <h1>Videojuegos</h1>
+            
+            <div class="cards">
+                
+                <article class="card">
+                    <img class="card__img" src="imagenes/PortadaSilksong.jpg" alt="Portada del videojuego Hollow Knight: SilkSong" />
+                    <h3>SilkSong</h3>     
+                    <div class="card-info">
+                        <h4>Descripción</h4>
+                        <p>Silksong expande el universo de Hollow Knight con una protagonista distinta, un mundo nuevo y mecánicas más rápidas y desafiantes.</p>
+                        <h4>Opinión</h4>
+                        <p>SilkSong me ha resultado muy entretenido y desafiante. Existe un personaje llamado Seth, un fan que falleció de cáncer y fue incorporado como jefe.</p>
+                        <a class="card__link" href="https://store.steampowered.com/app/1030300/Hollow_Knight_Silksong/" target="_blank" rel="noopener noreferrer">Más información sobre SilkSong</a>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <img class="card__img" src="imagenes/PortadaPokemonGO.jpg" alt="Portada del videojuego Pokémon GO" />       
+                    <h3>Pokémon GO</h3>    
+                    <div class="card-info">
+                        <h4>Descripción</h4>
+                        <p>Juego de realidad aumentada que permite capturar y combatir con Pokémon en el mundo real usando GPS.</p>
+                        <h4>Opinión</h4>
+                        <p>Me gusta salir a caminar y descubrir nuevos lugares. Es una forma divertida de hacer ejercicio, pero ten cuidado con los baneo de cuenta.</p>
+                        <a class="card__link" href="https://pokemongo.com/es" target="_blank" rel="noopener noreferrer">Más información sobre Pokémon GO</a>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <img class="card__img" src="imagenes/PortadaDragonTrail.jpg" alt="Portada del videojuego Dragon Trail" />
+                    <h3>Dragon Trail</h3>
+                    <div class="card-info">
+                        <h4>Descripción</h4>
+                        <p>Cazadores, seguid las instrucciones del destino y entrad en las turbulencias tiempo-espaciales en la Astroisla.</p>
+                        <h4>Opinión</h4>
+                        <p>Permite jugar con personas de distintos países. Recomiendo descargarlo de tiendas oficiales para evitar problemas de seguridad.</p>
+                        <a class="card__link" href="https://dt.wattgaming.com/" target="_blank" rel="noopener noreferrer">Más información sobre Dragon Trail</a>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <img class="card__img" src="imagenes/PortadaHollow.avif" alt="Portada del videojuego Hollow Knight" />
+                    <h3>Hollow Knight</h3> 
+                    <div class="card-info">
+                        <h4>Descripción</h4>
+                        <p>Videojuego metroidvania lanzado en 2017. Es la precuela del esperado Silksong.</p>
+                        <h4>Opinión</h4>
+                        <p>Muy desafiante. Aún no logro terminarlo, me falta la polilla blanca y completar al 100%.</p>
+                        <a class="card__link" href="https://hollow-knight.softonic.com/" target="_blank" rel="noopener noreferrer">Más información sobre Hollow Knight</a>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <img class="card__img" src="imagenes/PortadaKOF.avif" alt="Portada del videojuego The King of Fighters" />
+                    <h3>The King of Fighters</h3> 
+                    <div class="card-info">
+                        <h4>Descripción</h4>
+                        <p>Popular serie de juegos de lucha de SNK que combina personajes de varias franquicias en combates de equipos de tres.</p>
+                        <h4>Opinión</h4>
+                        <p>Partí jugando en arcade. Ha mejorado gráficamente, aunque a veces siento que se pierde un poco el origen del juego.</p>
+                        <a class="card__link" href="https://www.snk-corp.co.jp/es-es/games/kof-portal/series/" target="_blank" rel="noopener noreferrer">Más información sobre KOF</a>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <img class="card__img" src="imagenes/PortadaZelda.jpg" alt="Portada del videojuego Zelda" />
+                    <h3>Zelda</h3> 
+                    <div class="card-info">
+                        <h4>Descripción</h4>
+                        <p>Serie de acción-aventura de Nintendo que describe las heroicas aventuras de Link para salvar el reino de Hyrule.</p>
+                        <h4>Opinión</h4>
+                        <p>Me encanta jugar en la Nintendo 3DS. Extraño que antes tenías que buscar todo por tu cuenta sin tantas guías automáticas.</p>
+                        <a class="card__link" href="https://zelda.nintendo.com/" target="_blank" rel="noopener noreferrer">Más información sobre Zelda</a>
+                    </div>
+                </article>
+
+            </div>
+        </main>
+    </div>
+
+    <script>
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('click', () => {
+                card.classList.toggle('open');
+            });
+        });
+    </script>
+
+    <footer id="contacto" class="footer">
+        <h2 class="section__title">Contacto</h2>
+        <p>© 2026 Videojuegos <strong>Sekhmet</strong></p>
+        <p>Contacto: <a class="footer__link" href="mailto:lili.zapata@duocuc.cl">lili.zapata@duocuc.cl</a></p>
+    </footer>
+</body>
+<<<<<<< HEAD
+</html>
+=======
+</html>
+>>>>>>> c0663bc (Reparando repositorio y preparando entrega)

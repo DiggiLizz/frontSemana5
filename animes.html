@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animes - Sekhmet</title>
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+    <div class="layout">
+        
+        <aside class="sidebar">
+            <h2>Sekhmet</h2>
+            <nav>
+                <ul class="nav__list">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="videojuegos.html">Videojuegos</a></li>
+                    <li><a href="animes.html">Anime</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+        </aside>
+        
+        <main class="content">
+            <h1>Colección de Animes</h1>
+            
+            <div class="cards">
+                
+                <article class="card">
+                    <img class="card__img" src="imagenes/PortadaNGE.jpg" alt="Neon Genesis Evangelion">
+                    <h3>Neon Genesis Evangelion</h3>     
+                    <div class="card-info">
+                        <h4>Descripción</h4>
+                        <p>En el año 2015 la humanidad intenta recuperarse del «Segundo impacto» tras la aparición de los Ángeles. Gendoh Ikari desarrolla los Evangelion para defenderse.</p>
+                        <h4>Opinión</h4>
+                        <p>Anime clásico de los 90s, existencialista y profundo. Se debe ver con mucha atención a los detalles.</p>
+                        <a href="https://www.youtube.com/watch?v=_FmUpViWDX4" target="_blank">Ver capítulo</a>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <img class="card__img" src="imagenes/PortadaEstanArrestados.jpg" alt="Estan Arrestados">
+                    <h3>Estan Arrestados</h3>   
+                    <div class="card-info">
+                        <h4>Descripción</h4>
+                        <p>Natsumi y Miyuki son dos policías con personalidades distintas que aprenden a trabajar en equipo en la prefectura de Bokuto.</p>
+                        <h4>Opinión</h4>
+                        <p>Genial, cómico y con gran desarrollo de personajes. Muy recomendado para reír.</p>
+                        <a href="https://www.youtube.com/watch?v=qsE_DbAjYOw" target="_blank">Ver video</a>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <img class="card__img" src="imagenes/PortadaZenki.jpg" alt="Zenki">
+                    <h3>Zenki</h3>
+                    <div class="card-info">
+                        <h4>Descripción</h4>
+                        <p>Cherry Night y el demonio Zenki luchan contra las "semillas del mal" que transforman a las personas en demonios.</p>
+                        <h4>Opinión</h4>
+                        <p>Toque de magia y acción con escenas muy cómicas entre Zenki y Cherry.</p>
+                        <a href="https://www.youtube.com/watch?v=tTyqk9yArqw" target="_blank">Ver video</a>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <img class="card__img" src="imagenes/PortadaRanma12.jpg" alt="Ranma 1/2">
+                    <h3>Ranma 1/2</h3> 
+                    <div class="card-info">
+                        <h4>Descripción</h4>
+                        <p>Ranma Saotome se convierte en chica al mojarse con agua fría tras caer en un pozo mágico en China.</p>
+                        <h4>Opinión</h4>
+                        <p>Mezcla única de artes marciales y comedia. Un clásico indispensable.</p>
+                        <a href="https://www.youtube.com/watch?v=pZ3qsLzssKI" target="_blank">Ver Opening</a>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <img class="card__img" src="imagenes/PortadaEscaflowne.jpg" alt="Escaflowne">
+                    <h3>Escaflowne</h3> 
+                    <div class="card-info">
+                        <h4>Descripción</h4>
+                        <p>Hitomi viaja al mundo de Gaia donde se ve envuelta en una guerra con mechas y dragones.</p>
+                        <h4>Opinión</h4>
+                        <p>Fantasía épica y romance. La calidad del dibujo de la época es fascinante.</p>
+                        <a href="https://www.youtube.com/watch?v=pU-k30r9jeE" target="_blank">Ver remasterizado</a>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <img class="card__img" src="imagenes/PortadaDigimon.avif" alt="Digimon">
+                    <h3>Digimon</h3> 
+                    <div class="card-info">
+                        <h4>Descripción</h4>
+                        <p>Siete niños elegidos viajan al Mundo Digital para luchar contra las fuerzas de la oscuridad.</p>
+                        <h4>Opinión</h4>
+                        <p>El mejor de la franquicia. Toca temas de crecimiento personal y amistad muy profundos.</p>
+                        <a href="https://www.youtube.com/watch?v=7PXb7ZHwITg" target="_blank">Más información</a>
+                    </div>
+                </article>
+
+            </div>
+        </main>
+    </div>
+
+    <footer id="contacto" class="footer">
+        <h2>Contacto</h2>
+        <p>© 2026 Videojuegos <strong>Sekhmet</strong></p>
+        <p>Email: <a href="mailto:lili.zapata@duocuc.cl">lili.zapata@duocuc.cl</a></p>
+    </footer>
+
+    <script>
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('click', () => {
+                card.classList.toggle('open');
+            });
+        });
+    </script>
+
+</body>
