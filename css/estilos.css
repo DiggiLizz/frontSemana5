@@ -13,13 +13,11 @@ html {
 }
 
 body {
-    margin: 0;                    /* Elimina los márgenes por defecto del navegador */
-    padding: 0;                   /* Elimina el relleno por defecto */
-    min-height: 100vh;            /* Garantiza que el cuerpo mida al menos el alto de la pantalla */
-    background-color: #0B1220;    /* Color de fondo oscuro de respaldo */
-    background-image:             /* Crea un degradado doble: uno oscuro para legibilidad y otro de colores (violeta a azul) */
-        linear-gradient(0deg, rgba(3, 7, 18, 0.7), rgba(3, 7, 18, 0.7)),
-        linear-gradient(45deg, #8B5CF6 0%, #4A90E2 100%); 
+    margin: 0;                               /* Elimina los márgenes por defecto del navegador */
+    padding: 0;                              /* Elimina el relleno por defecto */
+    min-height: 100vh;                       /* Garantiza que el cuerpo mida al menos el alto de la pantalla */
+    background-color: #2D1B4D;             /* Color de fondo oscuro de respaldo */
+    background-image: none !important;        /* sin degrade*/
     background-attachment: fixed;  /* Mantiene el fondo quieto mientras se mueve pantalla */
     background-size: cover;        /* Ajusta el fondo para cubrir toda la pantalla */
     background-repeat: no-repeat;  /* Evita que el fondo se duplique */
