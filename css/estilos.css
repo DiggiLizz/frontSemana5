@@ -223,12 +223,12 @@ a.btn-primary:hover {
 .card, .modal-content, .bg-dark {
     background-color: #3B2463 !important; /* Lila intermedio, más suave que el fondo */
     border: 1px solid #6D44B8 !important; /* Borde lila definido para guiar la vista */
-    color: #c0a8eb !important; /* Texto lila muy claro, evita el blanco puro */
+    color: #d56df2 !important; /* Texto lila muy claro, evita el blanco puro */
 }
 
 /* Ajuste para que los títulos tengan un color lila */
 .text-info, h1, h3, h5, .card-title, .modal-title {
-    color: #8c73bb !important;
+    color: #bc5ec5 !important;
 }
 
 /* enlaces en el footer y textos secundarios sean legibles */
