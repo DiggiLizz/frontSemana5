@@ -32,7 +32,7 @@ if (contenedor) {
             // --- PASO 2: ACTIVAR EL BOTÓN RECIÉN CREADO ---
             const botonNuevo = columna.querySelector('.btn-novedad');
             botonNuevo.addEventListener('click', () => {
-                alert(`Detalles adicionales: ${datos.titulo}\nEsta es una reseña cargada dinámicamente.`);
+                alert(`Detalles adicionales: ${datos.titulo}\nHell Teacher: Jigoku Sensei Nube es un clásico anime shonen de terror/comedia de los 90, centrado en Meisuke Nueno ("Nube"), un profesor de primaria que usa su mano demoníaca sellada para proteger a sus alumnos de espíritus y fantasmas. La serie mezcla humor, elementos educativos y historias episódicas de miedo. Es conocida por su carismático protagonista, su atmósfera única y su capacidad para equilibrar el terror con momentos cómicos. ¡Una joya del anime que sigue siendo querida por los fans!`);
             });
         })
         .catch(error => {
