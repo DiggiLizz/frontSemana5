@@ -44,7 +44,7 @@ En Veterinaria: Es como seguir un protocolo de reanimación ya probado. No inven
 🛠️ Evolución del Sistema (Semanas 1 a 5)
 
 * 🦴 Semana 1: La Anatomía Básica (HTML)
-Creamos el esqueleto usando HTML Semántico. Usamos etiquetas con nombre propio (<header>, <nav>, <section>) para que el navegador sepa exactamente qué órgano está procesando.
+Creamos el esqueleto usando HTML Semántico. Usamos etiquetas con nombre propio como header, nav, section, para que el navegador sepa exactamente qué órgano está procesando.
 
 * 🎨 Semana 2: La Estética y el Pelaje (CSS)
 Aplicamos el Modelo de Cajas para controlar márgenes (margin) y rellenos (padding), asegurando que cada órgano tenga su espacio vital. Usamos un degradado de azul a morado para darle una identidad visual única.
