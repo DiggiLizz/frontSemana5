@@ -31,7 +31,7 @@ if (contenedor) {
 const logo = document.querySelector('.navbar-brand');
 if (logo) {
     logo.addEventListener('mouseover', () => {
-        logo.style.textShadow = "0 0 15px #7e0899";
+        logo.style.textShadow = "0 0 15px #e4dfe6";
         logo.style.transition = "0.3s";
     });
     logo.addEventListener('mouseout', () => {
