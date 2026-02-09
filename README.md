@@ -1,4 +1,5 @@
 🐺 Proyecto Sekhmet: Bitácora de Desarrollo Frontend
+-----------------------------------------------------
 
 ¡Bienvenidos! Este repositorio es la evolución de mi aprendizaje. Aquí he integrado mi experiencia en clínica veterinaria con la ingeniería, construyendo un sitio que no solo es visual, sino funcional y reactivo.
 
@@ -17,7 +18,6 @@ En Veterinaria: Imagina un paciente en una camilla.
 
 2. Semántica (El Nombre Correcto)
 Es usar etiquetas que describen su contenido, no solo su apariencia.
-
 En Veterinaria: Es como llamar a cada instrumento por su nombre técnico (bisturí, pinza, fórceps) en lugar de decir "la cosa de metal". Usar <header> en lugar de un <div> genérico ayuda a que Google y los lectores de pantalla entiendan tu página.
 
 3. Asincronía (La Sala de Espera)
@@ -40,26 +40,29 @@ Es un conjunto de reglas y herramientas ya establecidas que te facilitan el trab
 
 En Veterinaria: Es como seguir un protocolo de reanimación ya probado. No inventas los pasos cada vez; sigues una guía estándar que sabes que funciona para ahorrar tiempo y evitar errores.
 
-🛠️ Evolución del Sistema (Semanas 1 a 5)
-🦴 Semana 1: La Anatomía Básica (HTML)
-Creamos el esqueleto usando HTML Semántico. Usamos etiquetas con nombre propio (<header>, <nav>, <section>) para que el navegador sepa exactamente qué órgano está procesando.
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-🎨 Semana 2: La Estética y el Pelaje (CSS)
+🛠️ Evolución del Sistema (Semanas 1 a 5)
+
+* 🦴 Semana 1: La Anatomía Básica (HTML)
+Creamos el esqueleto usando HTML Semántico. Usamos etiquetas con nombre propio como header, nav, section, para que el navegador sepa exactamente qué órgano está procesando.
+
+* 🎨 Semana 2: La Estética y el Pelaje (CSS)
 Aplicamos el Modelo de Cajas para controlar márgenes (margin) y rellenos (padding), asegurando que cada órgano tenga su espacio vital. Usamos un degradado de azul a morado para darle una identidad visual única.
 
-📱 Semana 3: Adaptabilidad y Fisiología (Responsive Design)
+* 📱 Semana 3: Adaptabilidad y Fisiología (Responsive Design)
 Buscamos la homeostasis del sitio. Mediante Flexbox y CSS Grid, logramos que la página mantenga su equilibrio y orden sin importar si se ve en un celular pequeño o en un monitor de PC.
 
-🏥 Semana 4: El Hospital Modular (Bootstrap 5)
+* 🏥 Semana 4: El Hospital Modular (Bootstrap 5)
 Integramos tecnología de punta para mejorar la navegación:
 
-Navbar: Una barra de navegación colapsable (adaptable).
+   -  Navbar: Una barra de navegación colapsable (adaptable).
+    
+   -  Carousel: Un carrusel dinámico que cambia imágenes automáticamente cada 3 segundos.
+    
+   -  Cards: Tarjetas organizadas para las reseñas de anime y juegos.
 
-Carousel: Un carrusel dinámico que cambia imágenes automáticamente cada 3 segundos.
-
-Cards: Tarjetas organizadas para las reseñas de anime y juegos.
-
-🧠 Semana 5: El Sistema Nervioso (DOM & Fetch API)
+* 🧠 Semana 5: El Sistema Nervioso (DOM & Fetch API)
 Le dimos vida al sitio mediante JavaScript:
 
 Eventos: Programamos reflejos ante el click, el mouseover (brillo en el logo) y el submit (envío de formularios sin recargar la página).
