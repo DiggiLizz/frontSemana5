@@ -1,26 +1,37 @@
 
-// PASO 1: MANIPULACIÓN DEL DOM
-
-// condicional para que solo actúe si el contenedor existe en la página
+// =========================================================
+// PASO 1: MANIPULACIÓN DEL DOM + FETCH API
+// =========================================================
 const contenedor = document.getElementById('novedades-dinamicas');
 
 if (contenedor) {
-    const columna = document.createElement('div');
-    columna.className = 'col-12 col-md-10 mt-4'; 
+    // 1. Usamos Fetch para ir a buscar el archivo JSON
+    fetch('novedades.json')
+        .then(respuesta => {
+            // Verificamos si la respuesta es correcta (como un examen médico exitoso)
+            if (!respuesta.ok) throw new Error("No se pudo cargar el archivo");
+            return respuesta.json(); // Convertimos la respuesta a un objeto JS
+        })
+        .then(datos => {
+            // 2. Si todo sale bien, creamos la tarjeta con los datos del JSON
+            const columna = document.createElement('div');
+            columna.className = 'col-12 col-md-10 mt-4';
 
-    columna.innerHTML = `
-        <div class="card bg-dark border-info text-light shadow-lg">
-            <div class="card-body text-center">
-                <h4 class="card-title text-info">✨ Novedad de la Semana ✨</h4>
-                <p class="card-text">
-                    ¡Atención Comunidad Sekhmet! Hemos añadido nuevas reseñas. 
-                    No te pierdas el análisis especial de los clásicos.
-                </p>
-                <span class="badge bg-info text-dark">Nuevo contenido</span>
-            </div>
-        </div>
-    `;
-    contenedor.appendChild(columna);
+            columna.innerHTML = `
+                <div class="card bg-dark border-info text-light shadow-lg">
+                    <div class="card-body text-center">
+                        <h4 class="card-title text-info">${datos.titulo}</h4>
+                        <p class="card-text">${datos.descripcion}</p>
+                        <span class="badge bg-info text-dark">${datos.etiqueta}</span>
+                    </div>
+                </div>
+            `;
+            contenedor.appendChild(columna);
+        })
+        .catch(error => {
+            // 3. Si algo falla (archivo no encontrado, etc), mostramos un error en consola
+            console.error("Error en la Fetch API:", error);
+        });
 }
 
 // =========================================================
