@@ -5,31 +5,37 @@
 const contenedor = document.getElementById('novedades-dinamicas');
 
 if (contenedor) {
-    // 1. Usamos Fetch para ir a buscar el archivo JSON
     fetch('novedades.json')
         .then(respuesta => {
-            // Verificamos si la respuesta es correcta (como un examen médico exitoso)
             if (!respuesta.ok) throw new Error("No se pudo cargar el archivo");
-            return respuesta.json(); // Convertimos la respuesta a un objeto JS
+            return respuesta.json();
         })
         .then(datos => {
-            // 2. Si todo sale bien, creamos la tarjeta con los datos del JSON
             const columna = document.createElement('div');
             columna.className = 'col-12 col-md-10 mt-4';
 
+            // Agregamos el botón "Ver más" en el HTML dinámico
             columna.innerHTML = `
                 <div class="card bg-dark border-info text-light shadow-lg">
+                    <img src="${datos.imagen}" class="card-img-top" alt="Novedad" style="height: 200px; object-fit: cover;">
                     <div class="card-body text-center">
                         <h4 class="card-title text-info">${datos.titulo}</h4>
                         <p class="card-text">${datos.descripcion}</p>
-                        <span class="badge bg-info text-dark">${datos.etiqueta}</span>
+                        <span class="badge bg-info text-dark mb-3">${datos.etiqueta}</span>
+                        <br>
+                        <button class="btn btn-outline-info btn-sm btn-novedad">Ver detalles</button>
                     </div>
                 </div>
             `;
             contenedor.appendChild(columna);
+
+            // --- PASO 2: ACTIVAR EL BOTÓN RECIÉN CREADO ---
+            const botonNuevo = columna.querySelector('.btn-novedad');
+            botonNuevo.addEventListener('click', () => {
+                alert(`Detalles adicionales: ${datos.titulo}\nEsta es una reseña cargada dinámicamente.`);
+            });
         })
         .catch(error => {
-            // 3. Si algo falla (archivo no encontrado, etc), mostramos un error en consola
             console.error("Error en la Fetch API:", error);
         });
 }
