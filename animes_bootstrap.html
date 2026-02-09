@@ -1,44 +1,44 @@
-<!DOCTYPE html>     // Declaración del tipo de documento HTML5
-<html lang="es">    // Inicio del documento HTML con el idioma establecido en español
-<head>              // Inicio de la sección de encabezado del documento
-    <meta charset="UTF-8">      // Establece la codificación de caracteres a UTF-8 para soportar caracteres especiales
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">  // Configura la vista para dispositivos móviles, asegurando que el diseño sea responsivo
-    <title>Animes - Sekhmet (Bootstrap Semana 4)</title>                    // Título de la página que se muestra en la pestaña del navegador
+<!DOCTYPE html>    
+<html lang="es">   
+<head>              
+    <meta charset="UTF-8">      
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>Animes - Sekhmet (Bootstrap Semana 4)</title>                    
     
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">  // Enlace a la hoja de estilos de Bootstrap 5.3.0 para utilizar sus clases y estilos predefinidos
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">  
     
-    <link rel="stylesheet" href="css/estilos.css">          // Enlace a una hoja de estilos personalizada para agregar estilos específicos a la página
+    <link rel="stylesheet" href="css/estilos.css">        
 
 </head>
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top border-bottom border-secondary"> // Inicio de la barra de navegación con clases de Bootstrap para estilo y comportamiento responsivo
-        <div class="container">     // Contenedor para centrar el contenido de la barra de navegación
-            <a class="navbar-brand fw-bold" href="index.html">SEKHMET</a>   // Enlace a la página de inicio con el nombre de la marca "SEKHMET" y estilo de fuente en negrita
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">  // Botón para colapsar la barra de navegación en dispositivos móviles, con atributos para controlar el comportamiento de colapso
-                <span class="navbar-toggler-icon"></span>       // Icono del botón de colapso, que se muestra como tres líneas horizontales (hamburguesa) en dispositivos móviles
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top border-bottom border-secondary"> 
+        <div class="container">    
+            <a class="navbar-brand fw-bold" href="index.html">SEKHMET</a>   
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">   
+                <span class="navbar-toggler-icon"></span>       
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">       // Contenedor que se colapsa en dispositivos móviles, con un ID para ser controlado por el botón de colapso
-                <ul class="navbar-nav ms-auto">                         // Lista de elementos de navegación con clase para alinear a la derecha (ms-auto)
-                    <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>          // Elemento de navegación para la página de inicio                   
-                    <li class="nav-item"><a class="nav-link" href="videojuegos_bootstrap.html">Videojuegos</a></li>  // Elemento de navegación para la página de videojuegos                   
-                    <li class="nav-item"><a class="nav-link active" href="#">Anime</a></li>     // Elemento de navegación para la página de anime, con la clase "active" para indicar que es la página actual                   
-                    <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>         //  Elemento de navegación que enlaza a la sección de contacto en la misma página
+            <div class="collapse navbar-collapse" id="navbarNav">       
+                <ul class="navbar-nav ms-auto">                        
+                    <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>                           
+                    <li class="nav-item"><a class="nav-link" href="videojuegos_bootstrap.html">Videojuegos</a></li>                    
+                    <li class="nav-item"><a class="nav-link active" href="#">Anime</a></li>                      
+                    <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>        
                 </ul>
             </div>
         </div>
     </nav>
 
-    <main class="container my-5">                                                                       // Contenedor principal con margen vertical para separar del borde de la página 
-        <h1 class="text-center mb-5 display-4 fw-bold text-info">Reseñas de Anime</h1>                  // Título principal centrado con margen inferior, estilo de fuente grande y negrita, y color de texto azul claro (text-info)
+    <main class="container my-5">                                                                       
+        <h1 class="text-center mb-5 display-4 fw-bold text-info">Reseñas de Anime</h1>                 
 
-        <div class="row g-4">                                                                           // Fila de Bootstrap con clase para agregar espacio entre columnas (g-4)                              
-            <div class="col-12 col-md-6 col-lg-4">                                                      // Columna que ocupa todo el ancho en dispositivos pequeños, la mitad en dispositivos medianos y un tercio en dispositivos grandes                                      
-                <div class="card h-100 text-light shadow">                                              // Tarjeta de Bootstrap con altura completa, texto claro y sombra para resaltar el contenido
-                    <img src="imagenes/PortadaNGE.jpg" class="card-img-top" alt="Evangelion">           // Imagen de la tarjeta con clase para colocarla en la parte superior y texto alternativo para accesibilidad
-                    <div class="card-body text-center">                                                 // Cuerpo de la tarjeta con texto centrado
-                        <h5 class="card-title text-info">Neon Genesis Evangelion</h5>                   // Título de la tarjeta con estilo de texto azul claro (text-info)
-                        <button class="btn btn-outline-primary w-100 mt-3" data-bs-toggle="modal" data-bs-target="#modalEva">Leer Reseña Completa</button>          // Botón con estilo de Bootstrap para abrir un modal con la reseña completa, con clase para hacer el botón de ancho completo y margen superior para separar del título
+        <div class="row g-4">                                                                                                       
+            <div class="col-12 col-md-6 col-lg-4">                                                                                          
+                <div class="card h-100 text-light shadow">                                              
+                    <img src="imagenes/PortadaNGE.jpg" class="card-img-top" alt="Evangelion">           
+                    <div class="card-body text-center">                                                 
+                        <h5 class="card-title text-info">Neon Genesis Evangelion</h5>                   
+                        <button class="btn btn-outline-primary w-100 mt-3" data-bs-toggle="modal" data-bs-target="#modalEva">Leer Reseña Completa</button>         
                     </div>
                 </div>
             </div>
@@ -95,15 +95,15 @@
         </div>
     </main>
 
-    <div class="modal fade" id="modalEva" tabindex="-1">                                // Modal para la reseña de Neon Genesis Evangelion, con clase "fade" para animación de aparición y desaparición, y un ID para ser controlado por el botón correspondiente
-        <div class="modal-dialog modal-lg">                                             // Diálogo del modal con clase para hacerlo grande (modal-lg)
-            <div class="modal-content">                                                 // Contenido del modal que incluye la estructura de encabezado, cuerpo y pie de página
-                <div class="modal-header">                                              // Encabezado del modal con clase para el estilo
-                    <h5 class="modal-title text-info">Neon Genesis Evangelion</h5>      // Título del modal con estilo de texto azul claro (text-info)
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>       // Botón para cerrar el modal, con clase para el estilo y atributo para controlar la acción de cierre del modal
+    <div class="modal fade" id="modalEva" tabindex="-1">                               
+        <div class="modal-dialog modal-lg">                                            
+            <div class="modal-content">                                                 
+                <div class="modal-header">                                              
+                    <h5 class="modal-title text-info">Neon Genesis Evangelion</h5>      
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>       
                 </div>
                 <div class="modal-body">
-                    <h6 class="fw-bold">Descripción Original:</h6>                      // Subtítulo para la sección de descripción original con clase para hacer el texto en negrita
+                    <h6 class="fw-bold">Descripción Original:</h6>                      
                     // Descripción original de la serie de anime Neon Genesis Evangelion, que se muestra en el cuerpo del modal
                     <p>En el año 2015 la humanidad intenta recuperarse del «Segundo impacto», una catástrofe provocada por la caída de un meteorito en la Antártida años atrás. Tras sobrevivir al deshielo de los polos y a una inmediata sucesión de guerras sin fin, los seres humanos deben enfrentarse a un nuevo y mortal peligro. Unos misteriosos seres denominados Ángeles aparecen de improvisto llevando la destrucción por donde pasan. Para frenar esta amenaza, el científico Gendoh Ikari ha desarrollado los Evangelion, gigantescos robots que se convierten en la última línea de defensa para la humanidad. Uno de los primeros pilotos escogidos recibe el nombre de «Tercer Elegido». Shinji Ikari, hijo que Gendoh abandonó, se verá obligado a sondear las profundidades de sus propios recursos internos y así encontrar el valor y la fuerza, no sólo para luchar… sino para sobrevivir o arriesgarse a perderlo todo.</p>
                     // Opinión personal sobre la serie de anime Neon Genesis Evangelion, que se muestra en el cuerpo del modal
@@ -205,14 +205,14 @@
         </div>
     </div>
 
-    <footer id="contacto" class="bg-dark text-center py-5 border-top border-secondary mt-5">                // Pie de página con fondo oscuro, texto centrado, padding vertical, borde superior y margen superior para separar del contenido principal
-        <div class="container">                                                                             // Contenedor para centrar el contenido del pie de página
-            <p>© 2026 Videojuegos <strong>Sekhmet</strong></p>                                              // Texto de derechos de autor con el nombre de la marca en negrita
-            <p>Contacto: <a href="mailto:lili.zapata@duocuc.cl" class="text-info text-decoration-none">lili.zapata@duocuc.cl</a></p>  // Información de contacto con un enlace de correo electrónico, con estilo de texto azul claro y sin subrayado para el enlace
+    <footer id="contacto" class="bg-dark text-center py-5 border-top border-secondary mt-5">                
+        <div class="container">                                                                             
+            <p>© 2026 Videojuegos <strong>Sekhmet</strong></p>                                              
+            <p>Contacto: <a href="mailto:lili.zapata@duocuc.cl" class="text-info text-decoration-none">lili.zapata@duocuc.cl</a></p>  
         </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>   // Enlace al archivo JavaScript de Bootstrap para habilitar las funcionalidades interactivas como los modales y el menú de navegación colapsable
-    <script src="js/script.js"></script>                                                                   // Enlace a un archivo JavaScript personalizado para agregar funcionalidades específicas a la página, como el manejo de eventos o la manipulación del DOM
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>   
+    <script src="js/script.js"></script>                                                                   
 </body>
 </html>
