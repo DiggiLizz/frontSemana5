@@ -17,7 +17,6 @@ En Veterinaria: Imagina un paciente en una camilla.
 
 2. Semántica (El Nombre Correcto)
 Es usar etiquetas que describen su contenido, no solo su apariencia.
-
 En Veterinaria: Es como llamar a cada instrumento por su nombre técnico (bisturí, pinza, fórceps) en lugar de decir "la cosa de metal". Usar <header> en lugar de un <div> genérico ayuda a que Google y los lectores de pantalla entiendan tu página.
 
 3. Asincronía (La Sala de Espera)
