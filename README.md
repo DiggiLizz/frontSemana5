@@ -55,11 +55,11 @@ Buscamos la homeostasis del sitio. Mediante Flexbox y CSS Grid, logramos que la 
 * 🏥 Semana 4: El Hospital Modular (Bootstrap 5)
 Integramos tecnología de punta para mejorar la navegación:
 
-Navbar: Una barra de navegación colapsable (adaptable).
-
-Carousel: Un carrusel dinámico que cambia imágenes automáticamente cada 3 segundos.
-
-Cards: Tarjetas organizadas para las reseñas de anime y juegos.
+   -  Navbar: Una barra de navegación colapsable (adaptable).
+    
+   -  Carousel: Un carrusel dinámico que cambia imágenes automáticamente cada 3 segundos.
+    
+   -  Cards: Tarjetas organizadas para las reseñas de anime y juegos.
 
 * 🧠 Semana 5: El Sistema Nervioso (DOM & Fetch API)
 Le dimos vida al sitio mediante JavaScript:
