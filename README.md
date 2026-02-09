@@ -1,4 +1,5 @@
 🐺 Proyecto Sekhmet: Bitácora de Desarrollo Frontend
+-----------------------------------------------------
 
 ¡Bienvenidos! Este repositorio es la evolución de mi aprendizaje. Aquí he integrado mi experiencia en clínica veterinaria con la ingeniería, construyendo un sitio que no solo es visual, sino funcional y reactivo.
 
