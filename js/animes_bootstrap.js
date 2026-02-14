@@ -58,10 +58,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // 2. Función para renderizar las tarjetas
     const renderizarAnimes = () => {
         const contenedor = document.getElementById('contenedor-animes'); 
-        
         if (contenedor) {
             contenedor.innerHTML = ""; 
-            
             catalogoAnimes.forEach(anime => {
                 const card = `
                     <div class="col-md-6 col-lg-4">
@@ -84,8 +82,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>`;
                 contenedor.innerHTML += card;
             });
-
-            // IMPORTANTE: Ejecutar esto DESPUÉS de crear las tarjetas
             vincularEventosModales();
         }
     };
@@ -93,14 +89,24 @@ document.addEventListener('DOMContentLoaded', () => {
     const vincularEventosModales = () => {
         const botones = document.querySelectorAll('.btn-leer-mas');
         botones.forEach(boton => {
-            boton.onclick = (e) => { // Usamos onclick para mayor simplicidad kinestésica
+            boton.onclick = (e) => {
                 const id = e.target.getAttribute('data-id');
                 const animeEncontrado = catalogoAnimes.find(a => a.id == id);
                 
                 if (animeEncontrado) {
+                    // CONEXIÓN CON EL HTML (Revisión de IDs)
                     document.getElementById('modalTitulo').innerText = animeEncontrado.titulo;
                     document.getElementById('modalDescripcion').innerText = animeEncontrado.descripcion;
+                    
+                    // CORRECCIÓN CLAVE: Usamos .opinionPersonal porque así se llama en tu objeto
                     document.getElementById('modalOpinion').innerText = animeEncontrado.opinionPersonal;
+                    
+                    // CARGA DE IMAGEN: Inyectamos la imagen en el modal
+                    const imgModal = document.getElementById('modalImagen');
+                    if (imgModal) {
+                        imgModal.src = animeEncontrado.imagen;
+                        imgModal.alt = animeEncontrado.titulo;
+                    }
                 }
             };
         });
