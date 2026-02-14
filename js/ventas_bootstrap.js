@@ -120,8 +120,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const totalCarrito = document.getElementById('total-carrito');
     const formBusqueda = document.getElementById('form-busqueda');
     const btnVaciar = document.getElementById('btn-vaciar');
+    const btnFinalizar = document.getElementById('btn-finalizar');
 
-    // 3. FUNCIONES DE RENDERIZADO
+    // 4. FUNCIONES DE RENDERIZADO
     const renderizarTienda = (productos) => {
         if (!contenedorVentas) return;
         contenedorVentas.innerHTML = "";
@@ -178,7 +179,7 @@ document.addEventListener('DOMContentLoaded', () => {
         vincularBotonesEliminar();
     };
 
-    // 4. VINCULACIÓN DE EVENTOS (Separados para evitar duplicados)
+    // 5. VINCULACIÓN DE EVENTOS (Separados para evitar duplicados)
     const vincularBotonesAgregar = () => {
         document.querySelectorAll('.btn-agregar').forEach(boton => {
             boton.onclick = (e) => {
@@ -202,7 +203,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-    // 5. INICIALIZACIÓN DE EVENTOS GLOBALES
+    // 6. INICIALIZACIÓN DE EVENTOS GLOBALES
     if (formBusqueda) {
         formBusqueda.addEventListener('submit', (e) => {
             e.preventDefault();
@@ -219,5 +220,26 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    renderizarTienda(catalogoFiguras);
+
+    //  para finalizar la compra
+    if (btnFinalizar) {
+        btnFinalizar.addEventListener('click', () => {
+            // Verificamos si hay productos antes de "vender"
+            if (carrito.length === 0) {
+                alert("Tu carrito está vacío. Elige algunas figuras primero.");
+                return;
+            }
+
+            const totalFinal = totalCarrito.innerText;
+
+            // Feedback visual para el usuario
+            alert(`¡Gracias por tu compra en Sekhmet!\n\nProcesamos tu pedido por un total de: ${totalFinal}\nRecibirás un correo con los detalles del envío.`);
+
+            // Limpieza de estado: Vaciamos el array y refrescamos la UI
+            carrito = [];
+            actualizarInterfazCarrito();
+        });
+    }
+    // Renderizado inicial
+    renderizarTienda(catalogoFiguras);  
 });
