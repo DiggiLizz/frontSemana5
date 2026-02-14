@@ -61,25 +61,49 @@ document.addEventListener('DOMContentLoaded', () => {
         
         if (contenedor) {
             contenedor.innerHTML = ""; 
-            console.log("Renderizando catálogo de animes...");
             
             catalogoAnimes.forEach(anime => {
                 const card = `
                     <div class="col-md-6 col-lg-4">
                         <div class="card bg-dark text-white border-secondary h-100 shadow">
-                            <img src="${anime.imagen}" class="card-img-top" alt="${anime.titulo}" style="height: 350px; object-fit: cover;">
-                            <div class="card-body d-flex flex-column">
-                                <h5 class="card-title text-info fw-bold">${anime.titulo}</h5>
-                                <p class="card-text small flex-grow-1">${anime.descripcion.substring(0, 150)}...</p>
-                                <hr class="border-secondary">
-                                <p class="card-text x-small text-secondary italic"><strong>Mi opinión:</strong> ${anime.opinionPersonal.substring(0, 100)}...</p>
-                                <a href="${anime.link}" target="_blank" class="btn btn-outline-primary mt-auto">Ver video</a>
+                            <img src="${anime.imagen}" class="card-img-top" alt="${anime.titulo}" style="height: 250px; object-fit: cover;">
+                            <div class="card-body d-flex flex-column text-center p-0">
+                                <div class="bg-secondary bg-opacity-25 py-3 border-bottom border-top border-primary">
+                                    <h5 class="card-title text-info fw-bold mb-0">${anime.titulo}</h5>
+                                </div>
+                                <div class="p-3 d-flex flex-column flex-grow-1">
+                                    <button class="btn btn-outline-info w-100 mt-auto btn-leer-mas" 
+                                            data-bs-toggle="modal" 
+                                            data-bs-target="#modalAnalisis" 
+                                            data-id="${anime.id}">
+                                        Leer análisis
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>`;
                 contenedor.innerHTML += card;
             });
+
+            // IMPORTANTE: Ejecutar esto DESPUÉS de crear las tarjetas
+            vincularEventosModales();
         }
+    };
+
+    const vincularEventosModales = () => {
+        const botones = document.querySelectorAll('.btn-leer-mas');
+        botones.forEach(boton => {
+            boton.onclick = (e) => { // Usamos onclick para mayor simplicidad kinestésica
+                const id = e.target.getAttribute('data-id');
+                const animeEncontrado = catalogoAnimes.find(a => a.id == id);
+                
+                if (animeEncontrado) {
+                    document.getElementById('modalTitulo').innerText = animeEncontrado.titulo;
+                    document.getElementById('modalDescripcion').innerText = animeEncontrado.descripcion;
+                    document.getElementById('modalOpinion').innerText = animeEncontrado.opinionPersonal;
+                }
+            };
+        });
     };
 
     renderizarAnimes();

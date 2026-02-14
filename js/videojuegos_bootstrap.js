@@ -61,31 +61,64 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
 
     // 2. Función para renderizar las tarjetas
-    const renderizarVideoJuegos = () => {
-        const contenedor = document.getElementById('contenedor-videojuegos'); 
+    const renderizarVideojuegos = () => {
+        const contenedor = document.getElementById('contenedor-videojuegos');
         
         if (contenedor) {
-            contenedor.innerHTML = ""; 
-            console.log("Renderizando catálogo de videojuegos...");
+            contenedor.innerHTML = "";
             
-            catalogoVideojuegos.forEach(videojuego => {
+            catalogoVideojuegos.forEach(juego => {
                 const card = `
                     <div class="col-md-6 col-lg-4">
                         <div class="card bg-dark text-white border-secondary h-100 shadow">
-                            <img src="${videojuego.imagen}" class="card-img-top" alt="${videojuego.altText}" style="height: 350px; object-fit: cover;">
-                            <div class="card-body d-flex flex-column">
-                                <h5 class="card-title text-info fw-bold">${videojuego.titulo}</h5>
-                                <p class="card-text small flex-grow-1">${videojuego.descripcion.substring(0, 150)}...</p>
-                                <hr class="border-secondary">
-                                <p class="card-text x-small text-secondary italic"><strong>Mi opinión:</strong> ${videojuego.opinionPersonal.substring(0, 100)}...</p>
-                                <a href="${videojuego.link}" target="_blank" class="btn btn-outline-primary mt-auto">Ver video</a>
+                            <img src="${juego.imagen}" class="card-img-top" alt="${juego.titulo}" style="height: 250px; object-fit: cover;">
+                            
+                            <div class="card-body d-flex flex-column text-center p-0">
+                                <div class="bg-secondary bg-opacity-25 py-3 border-bottom border-top border-primary">
+                                    <h5 class="card-title text-info fw-bold mb-0">${juego.titulo}</h5>
+                                </div>
+                                
+                                <div class="p-3 d-flex flex-column flex-grow-1">
+                                    <button class="btn btn-outline-info w-100 mt-auto btn-leer-mas" 
+                                            data-bs-toggle="modal" 
+                                            data-bs-target="#modalAnalisis" 
+                                            data-id="${juego.id}">
+                                        Ver Análisis
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>`;
                 contenedor.innerHTML += card;
             });
+            vincularEventosModales();
         }
     };
 
-    renderizarVideoJuegos();
+    const vincularEventosModales = () => {
+        const botones = document.querySelectorAll('.btn-leer-mas');
+        botones.forEach(boton => {
+            boton.onclick = (e) => {
+                const id = e.target.getAttribute('data-id');
+                const juegoEncontrado = catalogoVideojuegos.find(j => j.id == id);
+                
+                if (juegoEncontrado) {
+                    document.getElementById('modalTitulo').innerText = juegoEncontrado.titulo;
+                    document.getElementById('modalDescripcion').innerText = juegoEncontrado.descripcion;
+                    document.getElementById('modalOpinion').innerText = juegoEncontrado.opinion;
+                    
+                    // Actualizamos el link del video si existe
+                    const btnLink = document.getElementById('modalLink');
+                    if (juegoEncontrado.link) {
+                        btnLink.href = juegoEncontrado.link;
+                        btnLink.style.display = "block";
+                    } else {
+                        btnLink.style.display = "none";
+                    }
+                }
+            };
+        });
+    };
+
+    renderizarVideojuegos();
 });

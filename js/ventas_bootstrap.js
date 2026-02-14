@@ -137,12 +137,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="col-md-6 col-lg-4">
                     <div class="card bg-dark text-white border-secondary h-100 shadow">
                         <img src="${prod.imagen}" class="card-img-top" alt="${prod.altText}" style="height: 250px; object-fit: cover;">
-                        <div class="card-body d-flex flex-column">
-                            <h5 class="card-title text-info h6">${prod.titulo}</h5>
-                            <p class="text-success fw-bold fs-5">$${prod.precio.toLocaleString('es-CL')}</p>
-                            <button class="btn btn-primary mt-auto btn-agregar" data-id="${prod.id}">
-                                Agregar al Carrito
-                            </button>
+                        
+                        <div class="card-body d-flex flex-column text-center p-0">
+                            <div class="bg-secondary bg-opacity-25 py-3 border-bottom border-top border-primary">
+                                <h5 class="card-title text-info h6 fw-bold mb-0">${prod.titulo}</h5>
+                            </div>
+                            
+                            <div class="p-3 d-flex flex-column flex-grow-1">
+                                <p class="text-success fw-bold fs-5 mb-3">$${prod.precio.toLocaleString('es-CL')}</p>
+                                
+                                <button class="btn btn-outline-info mt-auto btn-agregar fw-bold" data-id="${prod.id}">
+                                    Agregar al Carrito
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>`;
