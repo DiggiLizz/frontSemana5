@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
             id: 2,
             titulo: "Estatua EVA-01 Test Type",
             precio: 85000,
-            imagen: "imagenes/figura_eva01.webp",
+            imagen: "imagenes/figura_eca01.webp",
             altText: "Estatua metálica del EVA-01 de Evangelion sobre base de NERV"
         },
         {

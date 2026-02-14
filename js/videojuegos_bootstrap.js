@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // descripción breve del videojuego
             descripcion: "Silksong expande el universo de Hollow Knight con una protagonista distinta, un mundo nuevo y mecánicas más rápidas.",
             opinionPersonal: "SilkSong me ha resultado muy entretenido y desafiante. Es un juego que requiere coordinación y memoria.",
-            imagen: "imagenes/PortadaSilkSong.jpg", // ruta de imagen
+            imagen: "imagenes/PortadaSilksong.jpg", // ruta de imagen
             altText: "Portada oficial del videojuego Hollow Knight Silksong mostrando a Hornet", // texto alternativo para la imagen
             link: "https://store.steampowered.com/app/1030300/Hollow_Knight_Silksong/" // enlace a video relacionado
         },
@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // descripción breve del videojuego
             descripcion: "El metroidvania clásico donde exploras el reino caído de Hallownest.",
             opinionPersonal: "Es increíble y desafiante. Me falta poco para completarlo al 100%.",
-            imagen: "imagenes/PortadaHollowKnight.avif", // ruta de imagen
+            imagen: "imagenes/PortadaHollow.avif", // ruta de imagen
             altText: "Portada oficial del videojuego Hollow Knight",
             link: "https://hollow-knight.softonic.com/" // enlace a video relacionado
         },
@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // descripción breve del videojuego
             descripcion: "Las heroicas aventuras de Link para salvar Hyrule y a la Princesa Zelda.",
             opinionPersonal: "Me encanta jugarlo en 3DS. Esa sensación de exploración libre es única.",
-            imagen: "imagenes/PortadaLegendOfZelda.jpg", // ruta de imagen
+            imagen: "imagenes/PortadaZelda.jpg", // ruta de imagen
             altText: "Portada oficial del videojuego The Legend of Zelda",
             link: "https://zelda.nintendo.com/" // enlace a video relacionado
         }
