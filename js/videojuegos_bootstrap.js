@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // descripción breve del videojuego
             descripcion: "El metroidvania clásico donde exploras el reino caído de Hallownest.",
             opinionPersonal: "Es increíble y desafiante. Me falta poco para completarlo al 100%.",
-            imagen: "imagenes/PortadaHollowKnight.jpg", // ruta de imagen
+            imagen: "imagenes/PortadaHollowKnight.avif", // ruta de imagen
             altText: "Portada oficial del videojuego Hollow Knight",
             link: "https://hollow-knight.softonic.com/" // enlace a video relacionado
         },
@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // descripción breve del videojuego
             descripcion: "Serie mítica de lucha por equipos de SNK con una gran historia.",
             opinionPersonal: "Desde el arcade hasta hoy, me encanta realizar los combos de cada personaje.",
-            imagen: "imagenes/PortadaKOF.jpg", // ruta de imagen
+            imagen: "imagenes/PortadaKOF.webp", // ruta de imagen
             altText: "Portada oficial del videojuego The King of Fighters",
             link: "https://www.snk-corp.co.jp/es-es/games/kof-portal/series/" // enlace a video relacionado
         },

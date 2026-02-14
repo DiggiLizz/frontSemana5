@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
             titulo: "Digimon",
             descripcion: "La historia se centra en siete niños de Japón, que son transportados al Mundo digital después de encontrar unos Digivice y ser arrastrados por una gran ola, llegando así a la Isla File. Allí encuentran a sus compañeros Digimon, y con su ayuda, aprenderán a sobrevivir pese a las adversidades de estar en un mundo desconocido. Conforme avanza la serie, descubren que son los Niños elegidos. A mitad de la serie se integra el octavo niño elegido con su Digimon. Los ocho niños tendrán que luchar contra las fuerzas de la oscuridad que quieren apoderarse del mundo digital y el mundo real.",
             opinionPersonal: "Primer anime de la franquicia Digimon, y a gusto personal, el mejor de todos. Cada franquicia tiene su encanto, pero este es el que tiene la mejor historia, desarrollo de personajes y la mejor música. También tocan temas sensibles como la pérdida, la amistad y el crecimiento personal. Y como todo anime de los 90s, tiene su toque de comedia que no está de más.",
-            imagen: "imagenes/PortadaDigimon.jpg",
+            imagen: "imagenes/PortadaDigimon.avif",
             altText: "Portada oficial del anime Digimon, mostrando a los personajes principales",
             link: "https://www.youtube.com/watch?v=7PXb7ZHwITg"
         }

@@ -114,15 +114,22 @@ document.addEventListener('DOMContentLoaded', () => {
     // 2. ESTADO DEL CARRITO (Memoria volátil)
     let carrito = [];
 
-    // 3. FUNCIONES DE RENDERIZADO
+    // 3. Selectores del DOM
     const contenedorVentas = document.getElementById('contenedor-ventas');
     const listaCarrito = document.getElementById('lista-carrito');
     const totalCarrito = document.getElementById('total-carrito');
+    const formBusqueda = document.getElementById('form-busqueda');
+    const btnVaciar = document.getElementById('btn-vaciar');
 
-    // Función para mostrar los productos en la tienda
+    // 3. FUNCIONES DE RENDERIZADO
     const renderizarTienda = (productos) => {
         if (!contenedorVentas) return;
         contenedorVentas.innerHTML = "";
+
+        if (productos.length === 0) {
+            contenedorVentas.innerHTML = `<p class="text-center text-secondary">No se encontraron productos.</p>`;
+            return;
+        }
 
         productos.forEach(prod => {
             const card = `
@@ -140,38 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>`;
             contenedorVentas.innerHTML += card;
         });
-        
-        // Activar eventos de botones después de renderizar
         vincularBotonesAgregar();
-    };
-
-    // 4. LÓGICA DEL CARRITO (Agregar / Eliminar / Calcular)
-
-    const vincularBotonesAgregar = () => {
-        const botones = document.querySelectorAll('.btn-agregar');
-        botones.forEach(boton => {
-            boton.addEventListener('click', (e) => {
-                const idProd = parseInt(e.target.getAttribute('data-id'));
-                const productoEncontrado = catalogoFiguras.find(p => p.id === idProd);
-                
-                if (productoEncontrado) {
-                    agregarAlCarrito(productoEncontrado);
-                }
-            });
-        });
-    };
-
-    const agregarAlCarrito = (producto) => {
-        // Añadimos el objeto al array del carrito
-        carrito.push(producto);
-        actualizarInterfazCarrito();
-        console.log("Carrito actualizado:", carrito);
-    };
-
-    const eliminarDelCarrito = (indice) => {
-        // Acción Kinestésica: eliminamos por posición en el array
-        carrito.splice(indice, 1);
-        actualizarInterfazCarrito();
     };
 
     const actualizarInterfazCarrito = () => {
@@ -185,7 +161,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         let sumaTotal = 0;
-
         carrito.forEach((prod, index) => {
             const item = document.createElement('li');
             item.className = "list-group-item bg-transparent text-light d-flex justify-content-between align-items-center border-secondary px-0";
@@ -194,48 +169,55 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="fw-bold">${prod.titulo}</div>
                     <div class="text-success">$${prod.precio.toLocaleString('es-CL')}</div>
                 </div>
-                <button class="btn btn-sm btn-outline-danger btn-eliminar" data-index="${index}">×</button>
-            `;
+                <button class="btn btn-sm btn-outline-danger btn-eliminar" data-index="${index}">×</button>`;
             listaCarrito.appendChild(item);
             sumaTotal += prod.precio;
         });
 
         totalCarrito.innerText = `$${sumaTotal.toLocaleString('es-CL')}`;
-
-        // Vincular eventos de eliminación
-        document.querySelectorAll('.btn-eliminar').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                const index = e.target.getAttribute('data-index');
-                eliminarDelCarrito(index);
-            });
-        });
-
-        // Vaciar carrito 
-        const btnVaciar = document.getElementById('btn-vaciar');
-        if (btnVaciar) {
-            btnVaciar.addEventListener('click', () => {
-                carrito = [];
-                actualizarInterfazCarrito();
-                console.log("Carrito vaciado");
-            });
-        }
+        vincularBotonesEliminar();
     };
 
-    // 5. EVENTO DE BÚSQUEDA (Requisito Semana 6)
-    const formBusqueda = document.getElementById('form-busqueda');
+    // 4. VINCULACIÓN DE EVENTOS (Separados para evitar duplicados)
+    const vincularBotonesAgregar = () => {
+        document.querySelectorAll('.btn-agregar').forEach(boton => {
+            boton.onclick = (e) => {
+                const idProd = parseInt(e.target.getAttribute('data-id'));
+                const producto = catalogoFiguras.find(p => p.id === idProd);
+                if (producto) {
+                    carrito.push(producto);
+                    actualizarInterfazCarrito();
+                }
+            };
+        });
+    };
+
+    const vincularBotonesEliminar = () => {
+        document.querySelectorAll('.btn-eliminar').forEach(btn => {
+            btn.onclick = (e) => {
+                const index = e.target.getAttribute('data-index');
+                carrito.splice(index, 1);
+                actualizarInterfazCarrito();
+            };
+        });
+    };
+
+    // 5. INICIALIZACIÓN DE EVENTOS GLOBALES
     if (formBusqueda) {
         formBusqueda.addEventListener('submit', (e) => {
             e.preventDefault();
-            const termino = document.getElementById('input-busqueda').value.toLowerCase();
-            
-            const filtrados = catalogoFiguras.filter(p => 
-                p.titulo.toLowerCase().includes(termino)
-            );
-            
+            const termino = document.getElementById('input-busqueda').value.toLowerCase().trim();
+            const filtrados = catalogoFiguras.filter(p => p.titulo.toLowerCase().includes(termino));
             renderizarTienda(filtrados);
         });
     }
 
-    // Inicializar tienda
+    if (btnVaciar) {
+        btnVaciar.addEventListener('click', () => {
+            carrito = [];
+            actualizarInterfazCarrito();
+        });
+    }
+
     renderizarTienda(catalogoFiguras);
 });
