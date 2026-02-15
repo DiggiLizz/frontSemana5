@@ -136,19 +136,18 @@ document.addEventListener('DOMContentLoaded', () => {
             const card = `
                 <div class="col-md-6 col-lg-4">
                     <div class="card bg-dark text-white border-secondary h-100 shadow">
-                        <img src="${prod.imagen}" class="card-img-top" alt="${prod.altText}" style="height: 250px; object-fit: cover;">
-                        
+                        <img src="${prod.imagen}" class="card-img-top" style="height: 200px; object-fit: cover;">
                         <div class="card-body d-flex flex-column text-center p-0">
-                            <div class="bg-secondary bg-opacity-25 py-3 border-bottom border-top border-primary">
-                                <h5 class="card-title text-info h6 fw-bold mb-0">${prod.titulo}</h5>
+                            <div class="bg-secondary bg-opacity-25 py-2 border-bottom border-primary">
+                                <h5 class="card-title text-truncate px-2">${prod.titulo}</h5>
                             </div>
-                            
-                            <div class="p-3 d-flex flex-column flex-grow-1">
-                                <p class="text-success fw-bold fs-5 mb-3">$${prod.precio.toLocaleString('es-CL')}</p>
-                                
-                                <button class="btn btn-outline-info mt-auto btn-agregar fw-bold" data-id="${prod.id}">
-                                    Agregar al Carrito
-                                </button>
+                            <div class="p-3">
+                                <p class="text-success fw-bold">$${prod.precio}</p>
+                                <button class="btn btn-outline-info btn-sm w-100 mb-2 btn-ver-detalle" 
+                                        data-bs-toggle="modal" 
+                                        data-bs-target="#modalDetalleVenta" 
+                                        data-id="${prod.id}">Ver Detalle</button>
+                                <button class="btn btn-info btn-sm w-100 btn-agregar" data-id="${prod.id}">Agregar</button>
                             </div>
                         </div>
                     </div>
@@ -156,6 +155,30 @@ document.addEventListener('DOMContentLoaded', () => {
             contenedorVentas.innerHTML += card;
         });
         vincularBotonesAgregar();
+
+        const vincularModalVentas = () => {
+            const botonesDetalle = document.querySelectorAll('.btn-ver-detalle');
+            botonesDetalle.forEach(boton => {
+                boton.onclick = (e) => {
+                    const id = e.currentTarget.getAttribute('data-id');
+                    // Buscamos en catalogoFiguras que es tu fuente de datos real
+                    const producto = catalogoFiguras.find(p => p.id == id);
+                    
+                    if (producto) {
+                        // Inyectamos solo Nombre, Precio e Imagen
+                        document.getElementById('modalTitulo').innerText = producto.titulo;
+                        document.getElementById('modalPrecio').innerText = `$${producto.precio.toLocaleString('es-CL')}`;
+                        
+                        const imgModal = document.getElementById('modalImagen');
+                        if (imgModal) {
+                            imgModal.src = producto.imagen;
+                            imgModal.alt = producto.titulo;
+                        }
+                    }
+                };
+            });
+        };
+
     };
 
     const actualizarInterfazCarrito = () => {
