@@ -161,17 +161,16 @@ document.addEventListener('DOMContentLoaded', () => {
             botonesDetalle.forEach(boton => {
                 boton.onclick = (e) => {
                     const id = e.currentTarget.getAttribute('data-id');
-                    // Buscamos en catalogoFiguras que es tu fuente de datos real
-                    const producto = catalogoFiguras.find(p => p.id == id);
+                    // CAMBIO: Usamos catalogoFiguras porque así se llama tu lista de arriba
+                    const producto = catalogoFiguras.find(p => p.id == parseInt(id));
                     
                     if (producto) {
-                        // Inyectamos solo Nombre, Precio e Imagen
                         document.getElementById('modalTitulo').innerText = producto.titulo;
                         document.getElementById('modalPrecio').innerText = `$${producto.precio.toLocaleString('es-CL')}`;
                         
                         const imgModal = document.getElementById('modalImagen');
                         if (imgModal) {
-                            imgModal.src = producto.imagen;
+                            imgModal.src = producto.imagen; // Ahora sí encontrará la ruta
                             imgModal.alt = producto.titulo;
                         }
                     }
