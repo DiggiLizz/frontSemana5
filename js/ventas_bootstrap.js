@@ -142,7 +142,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <h5 class="card-title text-truncate px-2">${prod.titulo}</h5>
                             </div>
                             <div class="p-3">
-                                <p class="text-success fw-bold">$${prod.precio}</p>
+                                <p class="text-success fw-bold">$${prod.precio.toLocaleString('es-CL')}</p>
                                 <button class="btn btn-outline-info btn-sm w-100 mb-2 btn-ver-detalle" 
                                         data-bs-toggle="modal" 
                                         data-bs-target="#modalDetalleVenta" 
@@ -154,30 +154,32 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>`;
             contenedorVentas.innerHTML += card;
         });
+
+        // LLAMADAS CRÍTICAS:
         vincularBotonesAgregar();
+        vincularModalVentas(); // 
+    };
 
-        const vincularModalVentas = () => {
-            const botonesDetalle = document.querySelectorAll('.btn-ver-detalle');
-            botonesDetalle.forEach(boton => {
-                boton.onclick = (e) => {
-                    const id = e.currentTarget.getAttribute('data-id');
-                    // CAMBIO: Usamos catalogoFiguras porque así se llama tu lista de arriba
-                    const producto = catalogoFiguras.find(p => p.id == parseInt(id));
+    const vincularModalVentas = () => {
+        const botonesDetalle = document.querySelectorAll('.btn-ver-detalle');
+        botonesDetalle.forEach(boton => {
+            boton.onclick = (e) => {
+                const id = e.currentTarget.getAttribute('data-id');
+                // Buscamos en catalogoFiguras (así se llama tu lista al principio del archivo)
+                const producto = catalogoFiguras.find(p => p.id == id);
+                
+                if (producto) {
+                    document.getElementById('modalTitulo').innerText = producto.titulo;
+                    document.getElementById('modalPrecio').innerText = `$${producto.precio.toLocaleString('es-CL')}`;
                     
-                    if (producto) {
-                        document.getElementById('modalTitulo').innerText = producto.titulo;
-                        document.getElementById('modalPrecio').innerText = `$${producto.precio.toLocaleString('es-CL')}`;
-                        
-                        const imgModal = document.getElementById('modalImagen');
-                        if (imgModal) {
-                            imgModal.src = producto.imagen; // Ahora sí encontrará la ruta
-                            imgModal.alt = producto.titulo;
-                        }
+                    const imgModal = document.getElementById('modalImagen');
+                    if (imgModal) {
+                        imgModal.src = producto.imagen;
+                        imgModal.alt = producto.titulo;
                     }
-                };
-            });
-        };
-
+                }
+            };
+        });
     };
 
     const actualizarInterfazCarrito = () => {
