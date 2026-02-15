@@ -87,30 +87,36 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const vincularEventosModales = () => {
-        const botones = document.querySelectorAll('.btn-leer-mas');
-        botones.forEach(boton => {
-            boton.onclick = (e) => {
-                const id = e.target.getAttribute('data-id');
-                const animeEncontrado = catalogoAnimes.find(a => a.id == id);
+    const botones = document.querySelectorAll('.btn-leer-mas');
+    
+    botones.forEach(boton => {
+        boton.onclick = (e) => {
+            // CAMBIO CLAVE: usamos currentTarget para asegurar que siempre lea el ID del botón
+            const id = e.currentTarget.getAttribute('data-id');
+            
+            // Verificamos en consola si el ID está llegando (F12 para ver)
+            console.log("ID capturado:", id); 
+
+            const animeEncontrado = catalogoAnimes.find(a => a.id == id);
+            
+            if (animeEncontrado) {
+                // Inyección de textos
+                document.getElementById('modalTitulo').innerText = animeEncontrado.titulo;
+                document.getElementById('modalDescripcion').innerText = animeEncontrado.descripcion;
+                document.getElementById('modalOpinion').innerText = animeEncontrado.opinionPersonal;
                 
-                if (animeEncontrado) {
-                    // CONEXIÓN CON EL HTML (Revisión de IDs)
-                    document.getElementById('modalTitulo').innerText = animeEncontrado.titulo;
-                    document.getElementById('modalDescripcion').innerText = animeEncontrado.descripcion;
-                    
-                    // CORRECCIÓN CLAVE: Usamos .opinionPersonal porque así se llama en tu objeto
-                    document.getElementById('modalOpinion').innerText = animeEncontrado.opinionPersonal;
-                    
-                    // CARGA DE IMAGEN: Inyectamos la imagen en el modal
-                    const imgModal = document.getElementById('modalImagen');
-                    if (imgModal) {
-                        imgModal.src = animeEncontrado.imagen;
-                        imgModal.alt = animeEncontrado.titulo;
-                    }
+                // Inyección de imagen
+                const imgModal = document.getElementById('modalImagen');
+                if (imgModal) {
+                    imgModal.src = animeEncontrado.imagen;
+                    imgModal.alt = animeEncontrado.titulo;
                 }
-            };
-        });
-    };
+            } else {
+                console.error("No se encontró el anime con ID:", id);
+            }
+        };
+    });
+};
 
     renderizarAnimes();
 });
