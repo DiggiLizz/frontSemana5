@@ -109,6 +109,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     document.getElementById('modalDescripcion').innerText = juego.descripcion;
                     document.getElementById('modalOpinion').innerText = juego.opinionPersonal;
                     
+                    const linkModal = document.getElementById('modalLink');
+                    if (linkModal) {
+                        linkModal.href = juego.link; 
+                    }
+
                     const imgModal = document.getElementById('modalImagen');
                     if (imgModal) {
                         imgModal.src = juego.imagen;

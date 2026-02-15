@@ -111,6 +111,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.getElementById('modalDescripcion').innerText = animeEncontrado.descripcion;
                 document.getElementById('modalOpinion').innerText = animeEncontrado.opinionPersonal;
                 
+                const linkModal = document.getElementById('modalLink');
+                    if (linkModal) {
+                        linkModal.href = animeEncontrado.link; // Aquí le pasamos el link de tu catálogo
+                    }
+
                 // Inyección de imagen
                 const imgModal = document.getElementById('modalImagen');
                 if (imgModal) {
