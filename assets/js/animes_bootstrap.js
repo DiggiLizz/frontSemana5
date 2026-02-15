@@ -62,12 +62,13 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
 
     // 2. Función para renderizar las tarjetas
-    const renderizarAnimes = () => {
-        const contenedor = document.getElementById('contenedor-animes'); 
-        if (contenedor) {
-            contenedor.innerHTML = ""; 
-            catalogoAnimes.forEach(anime => {
-                const card = `
+    const renderizarAnimes = () => {                                        // Seleccionamos el contenedor donde se mostrarán las tarjetas
+        const contenedor = document.getElementById('contenedor-animes');    // Verificamos que el contenedor exista antes de intentar modificarlo
+        if (contenedor) {                                                   // Si el contenedor existe, procedemos a renderizar las tarjetas
+            contenedor.innerHTML = "";                                      // Limpiamos el contenedor antes de agregar las nuevas tarjetas para evitar duplicados
+            catalogoAnimes.forEach(anime => {                               // Iteramos sobre cada anime en el catálogo para crear su tarjeta correspondiente
+                // Aquí se crea la estructura HTML de cada tarjeta utilizando template literals para insertar los datos del anime
+                const card = `                                              
                     <div class="col-md-6 col-lg-4">
                         <div class="card bg-dark text-white border-secondary h-100 shadow">
                             <img src="${anime.imagen}" class="card-img-top" alt="${anime.titulo}" style="height: 250px; object-fit: cover;">
@@ -86,48 +87,44 @@ document.addEventListener('DOMContentLoaded', () => {
                             </div>
                         </div>
                     </div>`;
-                contenedor.innerHTML += card;
+                contenedor.innerHTML += card;       // Agregamos la tarjeta al contenedor, utilizando += para concatenar cada nueva tarjeta con las anteriores, asegurando que todas se muestren correctamente sin sobrescribir las anteriores
             });
-            vincularEventosModales();
+            vincularEventosModales();               // Después de renderizar las tarjetas, vinculamos los eventos a los botones para que funcionen correctamente al hacer clic en "Leer análisis"
         }
     };
 
-    const vincularEventosModales = () => {
-    const botones = document.querySelectorAll('.btn-leer-mas');
+    const vincularEventosModales = () => {                      // Seleccionamos todos los botones "Leer análisis" que se han generado dinámicamente
+    const botones = document.querySelectorAll('.btn-leer-mas'); // Verificamos que se hayan encontrado botones antes de intentar vincular eventos
     
-    botones.forEach(boton => {
-        boton.onclick = (e) => {
-            // CAMBIO CLAVE: usamos currentTarget para asegurar que siempre lea el ID del botón
-            const id = e.currentTarget.getAttribute('data-id');
+    botones.forEach(boton => {              // Iteramos sobre cada botón para agregar un evento de clic que abrirá el modal con la información correspondiente al anime seleccionado
+        boton.onclick = (e) => {            // Al hacer clic en el botón, se captura el evento y se obtiene el ID del anime asociado al botón utilizando el atributo data-id. Es importante usar e.currentTarget para asegurarnos de que estamos obteniendo el ID del botón correcto, incluso si hay elementos anidados dentro del botón.
+            const id = e.currentTarget.getAttribute('data-id');   // Obtenemos el ID del anime desde el atributo data-id del botón que se ha clickeado, lo que nos permitirá identificar qué anime mostrar en el modal.
             
-            // Verificamos en consola si el ID está llegando (F12 para ver)
-            console.log("ID capturado:", id); 
+            console.log("ID capturado:", id);                               // Este console.log es útil para verificar que estamos obteniendo el ID correcto del botón clickeado, lo que nos ayudará a depurar cualquier problema relacionado con la identificación del anime seleccionado. 
 
-            const animeEncontrado = catalogoAnimes.find(a => a.id == id);
+            const animeEncontrado = catalogoAnimes.find(a => a.id == id);   // Buscamos en el catálogo de animes el anime que tiene el ID que coincide con el ID obtenido del botón clickeado
             
-            if (animeEncontrado) {
-                // Inyección de textos
-                document.getElementById('modalTitulo').innerText = animeEncontrado.titulo;
-                document.getElementById('modalDescripcion').innerText = animeEncontrado.descripcion;
-                document.getElementById('modalOpinion').innerText = animeEncontrado.opinionPersonal;
+            if (animeEncontrado) {                                                                           // Si encontramos el anime correspondiente al ID, procedemos a llenar el modal con la información de ese anime.
+                document.getElementById('modalTitulo').innerText = animeEncontrado.titulo;                   // Actualizamos el título del modal con el título del anime encontrado.
+                document.getElementById('modalDescripcion').innerText = animeEncontrado.descripcion;         // Actualizamos la descripción del modal con la descripción del anime encontrado.
+                document.getElementById('modalOpinion').innerText = animeEncontrado.opinionPersonal;         // Actualizamos la opinión personal del modal con la opinión personal del anime encontrado.
                 
-                const linkModal = document.getElementById('modalLink');
-                    if (linkModal) {
-                        linkModal.href = animeEncontrado.link; // Aquí le pasamos el link de tu catálogo
+                const linkModal = document.getElementById('modalLink');         // Seleccionamos el elemento del modal que contiene el enlace para verificar que exista antes de intentar actualizarlo, lo que nos ayudará a evitar errores si el elemento no se encuentra en el DOM.
+                    if (linkModal) {                                            // Si el elemento del enlace existe, actualizamos su atributo href con el enlace del anime encontrado para que los usuarios puedan acceder al video relacionado con ese anime directamente desde el modal.
+                        linkModal.href = animeEncontrado.link;                  // Actualizamos el atributo href del enlace del modal con el enlace del anime encontrado, lo que permitirá a los usuarios hacer clic en el enlace para ver el video relacionado con ese anime.
                     }
 
-                // Inyección de imagen
-                const imgModal = document.getElementById('modalImagen');
-                if (imgModal) {
-                    imgModal.src = animeEncontrado.imagen;
-                    imgModal.alt = animeEncontrado.titulo;
+                const imgModal = document.getElementById('modalImagen');        // Seleccionamos el elemento de la imagen del modal para verificar que exista antes de intentar actualizarlo, lo que nos ayudará a evitar errores si el elemento no se encuentra en el DOM.
+                if (imgModal) {                                                 // Si el elemento de la imagen existe, actualizamos su atributo src con la ruta de la imagen del anime encontrado y su atributo alt con el título del anime para que la imagen se muestre correctamente en el modal y tenga un texto alternativo descriptivo.
+                    imgModal.src = animeEncontrado.imagen;                      // Actualizamos el atributo src de la imagen del modal con la ruta de la imagen del anime encontrado, lo que permitirá que la imagen se muestre correctamente en el modal.
+                    imgModal.alt = animeEncontrado.titulo;                      // Actualizamos el atributo alt de la imagen del modal con el título del anime encontrado, lo que proporcionará un texto alternativo descriptivo para la imagen en caso de que no se pueda cargar o para mejorar la accesibilidad.
                 }
-            } else {
-                console.error("No se encontró el anime con ID:", id);
+            } else {                                                            // Si no encontramos un anime que coincida con el ID obtenido del botón clickeado, mostramos un mensaje de error en la consola para ayudar a depurar el problema y entender por qué no se pudo encontrar el anime correspondiente.
+                console.error("No se encontró el anime con ID:", id);           // Este console.error es útil para identificar problemas relacionados con la búsqueda del anime en el catálogo, como por ejemplo si el ID no coincide con ningún anime o si hay un error en la estructura de datos del catálogo que impide encontrar el anime correctamente.
             }
         };
     });
 };
 
-    renderizarAnimes();
+    renderizarAnimes();                                                         // Finalmente, llamamos a la función renderizarAnimes para que se ejecute al cargar la página y muestre las tarjetas de los animes en el contenedor correspondiente
 });

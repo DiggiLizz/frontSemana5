@@ -5,13 +5,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // 1. DEFINICIÓN DE DATOS (Inventario)
     const catalogoFiguras = [
         {
-            id: 1,
-            titulo: "Figura Zenki - Edición Guardián",
-            precio: 45000,
-            imagen: "assets/imagenes/figura_zenki.jpg",
-            altText: "Figura coleccionable de Zenki en postura de ataque con detalles en relieve"
+            id: 1,                                                                                  // Identificador único para cada figura en el catálogo
+            precio: 45000,                                                                          // Precio de la figura en pesos chilenos
+            imagen: "assets/imagenes/figura_zenki.jpg",                                             // Ruta de la imagen de la figura para mostrar en la tienda
+            altText: "Figura coleccionable de Zenki en postura de ataque con detalles en relieve"   // Texto alternativo para la imagen de la figura, lo que mejora la accesibilidad y proporciona una descripción de la imagen en caso de que no se pueda cargar o para usuarios con discapacidades visuales.
         },
-        {
+        {   // no se comentará cada figura, ya que poseen la misma estructura de datos 
             id: 2,
             titulo: "Estatua EVA-01 Test Type",
             precio: 85000,
@@ -112,18 +111,17 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
 
     // 2. ESTADO DEL CARRITO (Memoria volátil)
-    let carrito = [];
+    let carrito = [];                                                           // Array para almacenar los productos que el usuario ha agregado al carrito durante su sesión 
 
     // 3. Selectores del DOM
-    const contenedorVentas = document.getElementById('contenedor-ventas');
-    const listaCarrito = document.getElementById('lista-carrito');
-    const totalCarrito = document.getElementById('total-carrito');
-    const formBusqueda = document.getElementById('form-busqueda');
-    const btnVaciar = document.getElementById('btn-vaciar');
-    const btnFinalizar = document.getElementById('btn-finalizar');
-
+    const contenedorVentas = document.getElementById('contenedor-ventas');      // Contenedor principal donde se mostrarán las tarjetas de los productos disponibles en la tienda 
+    const listaCarrito = document.getElementById('lista-carrito');              // Elemento de la lista donde se mostrarán los productos que el usuario ha agregado al carrito para que pueda ver su selección actual y el total acumulado de su compra.
+    const totalCarrito = document.getElementById('total-carrito');              // Elemento donde se mostrará el total acumulado del carrito 
+    const formBusqueda = document.getElementById('form-busqueda');              // Formulario de búsqueda para que el usuario pueda filtrar los productos disponibles en la tienda según sus intereses
+    const btnFinalizar = document.getElementById('btn-finalizar');              // Botón para finalizar la compra  
+    
     // 4. FUNCIONES DE RENDERIZADO
-    const renderizarTienda = (productos) => {
+    const renderizarTienda = (productos) => {       
         if (!contenedorVentas) return;
         contenedorVentas.innerHTML = "";
 
@@ -134,9 +132,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         productos.forEach(prod => {
             const card = `
-                <div class="col-md-6 col-lg-4">
+                <div class="col-md-6 col-lg-4 mb-4">
                     <div class="card bg-dark text-white border-secondary h-100 shadow">
-                        <img src="${prod.imagen}" class="card-img-top" style="height: 200px; object-fit: cover;">
+                        <img src="${prod.imagen}" class="card-img-top" style="height: 200px; object-fit: cover;" alt="${prod.altText}">
                         <div class="card-body d-flex flex-column text-center p-0">
                             <div class="bg-secondary bg-opacity-25 py-2 border-bottom border-primary">
                                 <h5 class="card-title text-truncate px-2">${prod.titulo}</h5>
@@ -155,23 +153,21 @@ document.addEventListener('DOMContentLoaded', () => {
             contenedorVentas.innerHTML += card;
         });
 
-        // LLAMADAS CRÍTICAS:
+        // Estas llamadas DEBEN ir dentro de renderizarTienda pero después del forEach
         vincularBotonesAgregar();
-        vincularModalVentas(); // 
-    };
+        vincularModalVentas();
+    }; // Aquí cierra renderizarTienda
 
+    // 5. VINCULACIÓN DE EVENTOS
     const vincularModalVentas = () => {
         const botonesDetalle = document.querySelectorAll('.btn-ver-detalle');
         botonesDetalle.forEach(boton => {
             boton.onclick = (e) => {
                 const id = e.currentTarget.getAttribute('data-id');
-                // Buscamos en catalogoFiguras (así se llama tu lista al principio del archivo)
                 const producto = catalogoFiguras.find(p => p.id == id);
-                
                 if (producto) {
                     document.getElementById('modalTitulo').innerText = producto.titulo;
                     document.getElementById('modalPrecio').innerText = `$${producto.precio.toLocaleString('es-CL')}`;
-                    
                     const imgModal = document.getElementById('modalImagen');
                     if (imgModal) {
                         imgModal.src = producto.imagen;
@@ -205,12 +201,10 @@ document.addEventListener('DOMContentLoaded', () => {
             listaCarrito.appendChild(item);
             sumaTotal += prod.precio;
         });
-
         totalCarrito.innerText = `$${sumaTotal.toLocaleString('es-CL')}`;
         vincularBotonesEliminar();
     };
 
-    // 5. VINCULACIÓN DE EVENTOS (Separados para evitar duplicados)
     const vincularBotonesAgregar = () => {
         document.querySelectorAll('.btn-agregar').forEach(boton => {
             boton.onclick = (e) => {
@@ -219,8 +213,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (producto) {
                     carrito.push(producto);
                     actualizarInterfazCarrito();
-
-                    // Alerta que confirma la acción al usuario
                     alert(`Has agregado "${producto.titulo}" al carrito.`);
                 }
             };
@@ -247,33 +239,18 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    if (btnVaciar) {
-        btnVaciar.addEventListener('click', () => {
-            carrito = [];
-            actualizarInterfazCarrito();
-        });
-    }
-
-
-    //  para finalizar la compra
     if (btnFinalizar) {
         btnFinalizar.addEventListener('click', () => {
-            // Verificamos si hay productos antes de "vender"
             if (carrito.length === 0) {
-                alert("Tu carrito está vacío. Elige algunas figuras primero.");
+                alert("Tu carrito está vacío.");
                 return;
             }
-
-            const totalFinal = totalCarrito.innerText;
-
-            // Feedback visual para el usuario
-            alert(`¡Gracias por tu compra en Sekhmet!\n\nProcesamos tu pedido por un total de: ${totalFinal}\nRecibirás un correo con los detalles del envío.`);
-
-            // Limpieza de estado: Vaciamos el array y refrescamos la UI
+            alert(`¡Gracias por tu compra por un total de: ${totalCarrito.innerText}!`);
             carrito = [];
             actualizarInterfazCarrito();
         });
     }
+
     // Renderizado inicial
-    renderizarTienda(catalogoFiguras);  
-});
+    renderizarTienda(catalogoFiguras);
+}); // Este cierra el DOMContentLoaded del inicio
