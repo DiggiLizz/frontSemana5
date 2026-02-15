@@ -5,6 +5,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // 1. Definición de Datos 
     const catalogoVideojuegos = [
         {
+            
+            id: 1, // ID único para cada videojuego
             titulo: "Hollow Knight: SilkSong", // Título del videojuego
             // descripción breve del videojuego
             descripcion: "Silksong expande el universo de Hollow Knight con una protagonista distinta, un mundo nuevo y mecánicas más rápidas.",
@@ -14,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
             link: "https://store.steampowered.com/app/1030300/Hollow_Knight_Silksong/" // enlace a video relacionado
         },
         {
+            id: 2,
             titulo: "Pokemon GO", // Título del videojuego
             // descripción breve del videojuego
             descripcion: "Juego de realidad aumentada que permite capturar Pokémon en el mundo real.",
@@ -23,6 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
             link: "https://dt.wattgaming.com/" // enlace a video relacionado
         },
         {
+            id: 3,
             titulo: "Dragon Trail", // Título del videojuego
             // descripción breve del videojuego
             descripcion: "Explora la Astroisla en este mundo abierto lleno de poderes elementales.",
@@ -32,6 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
             link: "https://www.youtube.com/watch?v=_FmUpViWDX4" // enlace a video relacionado
         },
         {
+            id: 4,
             titulo: "Hollow Knight", // Título del videojuego
             // descripción breve del videojuego
             descripcion: "El metroidvania clásico donde exploras el reino caído de Hallownest.",
@@ -41,6 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
             link: "https://hollow-knight.softonic.com/" // enlace a video relacionado
         },
         {
+            id: 5,
             titulo: "The King of Fighters", // Título del videojuego
             // descripción breve del videojuego
             descripcion: "Serie mítica de lucha por equipos de SNK con una gran historia.",
@@ -50,6 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
             link: "https://www.snk-corp.co.jp/es-es/games/kof-portal/series/" // enlace a video relacionado
         },
         {
+            id: 6,
             titulo: "The Legend of Zelda", // Título del videojuego
             // descripción breve del videojuego
             descripcion: "Las heroicas aventuras de Link para salvar Hyrule y a la Princesa Zelda.",
