@@ -103,29 +103,34 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const vincularEventosModales = () => {
-        const botones = document.querySelectorAll('.btn-leer-mas');
-        botones.forEach(boton => {
-            boton.onclick = (e) => {
-                const id = e.target.getAttribute('data-id');
-                const juegoEncontrado = catalogoVideojuegos.find(j => j.id == id);
-                
-                if (juegoEncontrado) {
-                    document.getElementById('modalTitulo').innerText = juegoEncontrado.titulo;
-                    document.getElementById('modalDescripcion').innerText = juegoEncontrado.descripcion;
-                    document.getElementById('modalOpinion').innerText = juegoEncontrado.opinion;
-                    
-                    // Actualizamos el link del video si existe
-                    const btnLink = document.getElementById('modalLink');
-                    if (juegoEncontrado.link) {
-                        btnLink.href = juegoEncontrado.link;
-                        btnLink.style.display = "block";
-                    } else {
-                        btnLink.style.display = "none";
-                    }
-                }
-            };
-        });
-    };
+    const botones = document.querySelectorAll('.btn-leer-mas');
+    
+    botones.forEach(boton => {
+        boton.onclick = (e) => {
+            // CAMBIO CLAVE: usamos currentTarget para asegurar que siempre lea el ID del botón
+            const id = e.currentTarget.getAttribute('data-id');
+            
+            // Verificamos en consola si el ID está llegando (F12 para ver)
+            console.log("ID capturado:", id); 
 
-    renderizarVideojuegos();
+            const animeEncontrado = catalogoAnimes.find(a => a.id == id);
+            
+            if (animeEncontrado) {
+                // Inyección de textos
+                document.getElementById('modalTitulo').innerText = animeEncontrado.titulo;
+                document.getElementById('modalDescripcion').innerText = animeEncontrado.descripcion;
+                document.getElementById('modalOpinion').innerText = animeEncontrado.opinionPersonal;
+                
+                // Inyección de imagen
+                const imgModal = document.getElementById('modalImagen');
+                if (imgModal) {
+                    imgModal.src = animeEncontrado.imagen;
+                    imgModal.alt = animeEncontrado.titulo;
+                }
+            } else {
+                console.error("No se encontró el anime con ID:", id);
+            }
+        };
+    });
+};
 });
