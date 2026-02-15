@@ -1,136 +1,123 @@
-// videojuegos_bootstrap.js - Responsabilidad: Gestionar el catálogo de la página de videojuegos
-
 document.addEventListener('DOMContentLoaded', () => {
     
-    // 1. Definición de Datos 
+    // 1. DEFINICIÓN DE DATOS
     const catalogoVideojuegos = [
         {
-            
-            id: 1, // ID único para cada videojuego
-            titulo: "Hollow Knight: SilkSong", // Título del videojuego
-            // descripción breve del videojuego
-            descripcion: "Silksong expande el universo de Hollow Knight con una protagonista distinta, un mundo nuevo y mecánicas más rápidas.",
-            opinionPersonal: "SilkSong me ha resultado muy entretenido y desafiante. Es un juego que requiere coordinación y memoria.",
-            imagen: "imagenes/PortadaSilksong.jpg", // ruta de imagen
-            altText: "Portada oficial del videojuego Hollow Knight Silksong mostrando a Hornet", // texto alternativo para la imagen
-            link: "https://store.steampowered.com/app/1030300/Hollow_Knight_Silksong/" // enlace a video relacionado
+            id: 1,
+            titulo: "Hollow Knight: SilkSong",
+            descripcion: "Silksong es la épica secuela de Hollow Knight, la galardonada aventura de acción. Viaja a tierras inexploradas, descubre poderes nuevos, lucha contra vastas hordas de bichos y bestias y descubre secretos relacionados con tu naturaleza y tu pasado.",
+            opinionPersonal: "SilkSong me ha resultado muy entretenido y desafiante. Es un juego que requiere coordinación, memoria y un buen control, ya que se requiere poder jugar en zonas muy pequeñas, con enemigos que te atacan por todos lados.",
+            imagen: "imagenes/PortadaSilksong.jpg",
+            alt: "Portada de Hollow Knight: SilkSong",
+            link: "https://store.steampowered.com/app/1030300/Hollow_Knight_Silksong/"
+
         },
         {
             id: 2,
-            titulo: "Pokemon GO", // Título del videojuego
-            // descripción breve del videojuego
-            descripcion: "Juego de realidad aumentada que permite capturar Pokémon en el mundo real.",
-            opinionPersonal: "Es una forma divertida de hacer ejercicio y socializar. Me gusta descubrir nuevos lugares.",
-            imagen: "imagenes/PortadaPokemonGO.jpg", // ruta de imagen
-            altText: "Portada oficial del videojuego Pokemon GO", // texto alternativo para la imagen
-            link: "https://dt.wattgaming.com/" // enlace a video relacionado
+            titulo: "Pokemon GO",
+            descripcion: "Pokémon GO es un juego móvil gratuito de realidad aumentada (iOS/Android) desarrollado por Niantic que utiliza GPS para localizar, capturar y entrenar personajes en el mundo real. Los jugadores exploran su entorno para atrapar criaturas salvajes, visitar Poképaradas para obtener objetos y combatir en gimnasios. ",
+            opinionPersonal: "Es una forma divertida de hacer ejercicio y socializar. Me gusta descubrir nuevos lugares. también esta la opción de poder jugar sin salir de la casa, solo hay que tener cuidado de que no te baneen la cuenta.",
+            imagen: "imagenes/PortadaPokemonGO.jpg",
+            alt: "Portada de Pokemon GO",
+            link: "https://pokemongo.com/es"
+
         },
         {
             id: 3,
-            titulo: "Dragon Trail", // Título del videojuego
-            // descripción breve del videojuego
-            descripcion: "Explora la Astroisla en este mundo abierto lleno de poderes elementales.",
-            opinionPersonal: "Permite conocer nuevas culturas al jugar con gente de otros países. Muy recomendado., descargar de páginas habilitadas",
-            imagen: "imagenes/PortadaDragonTrail.jpg", // ruta de imagen
-            altText: "Portada oficial del videojuego Dragon Trail",
-            link: "https://www.youtube.com/watch?v=_FmUpViWDX4" // enlace a video relacionado
+            titulo: "Dragon Trail",
+            descripcion: "Dragon Trail 2: Fantasy World (también conocido como Dragon Hunters: Heroes Legend) es un MMORPG de acción 3D gratuito para Android e iOS, lanzado en agosto de 2022 y centrado en la exploración, recolección de mascotas y combate en un mundo fantástico. Ofrece juego en modo vertical y horizontal, con gráficos detallados, clima cambiante y clases de personajes basadas en elementos. ",
+            opinionPersonal: "Permite conocer nuevas culturas al jugar con gente de otros países. Muy recomendado.",
+            imagen: "imagenes/PortadaDragonTrail.jpg",
+            alt: "Portada de Dragon Trail",
+            link: "https://dt.wattgaming.com/"
         },
         {
             id: 4,
-            titulo: "Hollow Knight", // Título del videojuego
-            // descripción breve del videojuego
-            descripcion: "El metroidvania clásico donde exploras el reino caído de Hallownest.",
-            opinionPersonal: "Es increíble y desafiante. Me falta poco para completarlo al 100%.",
-            imagen: "imagenes/PortadaHollow.avif", // ruta de imagen
-            altText: "Portada oficial del videojuego Hollow Knight",
-            link: "https://hollow-knight.softonic.com/" // enlace a video relacionado
+            titulo: "Hollow Knight",
+            descripcion: "Hollow Knight es un aclamado videojuego de acción-aventura tipo metroidvania en 2D, destacado por su exploración, combate preciso y atmósfera melancólica. Desarrollado por Team Cherry, el jugador controla a un pequeño caballero explorando el vasto reino subterráneo de Hallownest, luchando contra criaturas corrompidas y descubriendo secretos. Incluye desafíos exigentes, gráficos dibujados a mano y una banda sonora épica. ",
+            opinionPersonal: "Es increíble y desafiante. Me falta poco para completarlo al 120%.",
+            imagen: "imagenes/PortadaHollow.avif",
+            alt: "Portada de Hollow Knight",
+            link: "https://hollow-knight.softonic.com/"
+            
         },
         {
             id: 5,
-            titulo: "The King of Fighters", // Título del videojuego
-            // descripción breve del videojuego
-            descripcion: "Serie mítica de lucha por equipos de SNK con una gran historia.",
-            opinionPersonal: "Desde el arcade hasta hoy, me encanta realizar los combos de cada personaje.",
-            imagen: "imagenes/PortadaKOF.webp", // ruta de imagen
-            altText: "Portada oficial del videojuego The King of Fighters",
-            link: "https://www.snk-corp.co.jp/es-es/games/kof-portal/series/" // enlace a video relacionado
+            titulo: "The King of Fighters",
+            descripcion: "The King of Fighters (KOF) es una icónica serie de videojuegos de lucha desarrollada por SNK, iniciada en 1994, famosa por sus batallas de equipos de tres contra tres (3v3). Mezcla personajes originales con luchadores de otras franquicias de SNK como Fatal Fury y Art of Fighting. Es reconocida por su velocidad, combos complejos y su gran elenco. ",
+            opinionPersonal: "Desde el arcade hasta hoy, me encanta realizar los combos de cada personaje, aunque muchas veces los hago sin darme cuenta, y cuando los intento, ya no salen.",
+            imagen: "imagenes/PortadaKOF.webp",
+            alt: "Portada de The King of Fighters",
+            link: "https://www.snk-corp.co.jp/es-es/games/kof-portal/series/"
+            
         },
         {
             id: 6,
-            titulo: "The Legend of Zelda", // Título del videojuego
-            // descripción breve del videojuego
-            descripcion: "Las heroicas aventuras de Link para salvar Hyrule y a la Princesa Zelda.",
-            opinionPersonal: "Me encanta jugarlo en 3DS. Esa sensación de exploración libre es única.",
-            imagen: "imagenes/PortadaZelda.jpg", // ruta de imagen
-            altText: "Portada oficial del videojuego The Legend of Zelda",
-            link: "https://zelda.nintendo.com/" // enlace a video relacionado
+            titulo: "The Legend of Zelda",
+            descripcion: "La Princesa Zelda es una figura central y recurrente en la serie de videojuegos de Nintendo The Legend of Zelda, caracterizada como la gobernante hyliana del reino de Hyrule, portadora de la Trifuerza de la Sabiduría y encarnación de la Diosa Hylia. A menudo actúa como guía, sabia gobernante o damisela en apuros, siendo fundamental en la lucha contra Ganondorf. ",
+            opinionPersonal: "Me encanta jugarlo en 3DS. Esa sensación de exploración libre es única, buscando cada rincón del mapa, encontrando secretos y enfrentando desafíos. Es un juego que siempre me sorprende con su mundo abierto y su historia envolvente.",
+            imagen: "imagenes/PortadaZelda.jpg",
+            alt: "Portada de The Legend of Zelda",
+            link: "https://zelda.nintendo.com/"
+            
         }
     ];
 
-    // 2. Función para renderizar las tarjetas
+    // 2. FUNCIÓN DE RENDERIZADO
     const renderizarVideojuegos = () => {
         const contenedor = document.getElementById('contenedor-videojuegos');
+        if (!contenedor) return;
+
+        contenedor.innerHTML = "";
         
-        if (contenedor) {
-            contenedor.innerHTML = "";
-            
-            catalogoVideojuegos.forEach(juego => {
-                const card = `
-                    <div class="col-md-6 col-lg-4">
-                        <div class="card bg-dark text-white border-secondary h-100 shadow">
-                            <img src="${juego.imagen}" class="card-img-top" alt="${juego.titulo}" style="height: 250px; object-fit: cover;">
-                            
-                            <div class="card-body d-flex flex-column text-center p-0">
-                                <div class="bg-secondary bg-opacity-25 py-3 border-bottom border-top border-primary">
-                                    <h5 class="card-title text-info fw-bold mb-0">${juego.titulo}</h5>
-                                </div>
-                                
-                                <div class="p-3 d-flex flex-column flex-grow-1">
-                                    <button class="btn btn-outline-info w-100 mt-auto btn-leer-mas" 
-                                            data-bs-toggle="modal" 
-                                            data-bs-target="#modalAnalisis" 
-                                            data-id="${juego.id}">
-                                        Ver Análisis
-                                    </button>
-                                </div>
+        catalogoVideojuegos.forEach(juego => {
+            const card = `
+                <div class="col-md-6 col-lg-4">
+                    <div class="card bg-dark text-white border-secondary h-100 shadow">
+                        <img src="${juego.imagen}" class="card-img-top" alt="${juego.titulo}" style="height: 250px; object-fit: cover;">
+                        <div class="card-body d-flex flex-column text-center p-0">
+                            <div class="bg-secondary bg-opacity-25 py-3 border-bottom border-top border-primary">
+                                <h5 class="card-title text-info fw-bold mb-0">${juego.titulo}</h5>
+                            </div>
+                            <div class="p-3 d-flex flex-column flex-grow-1">
+                                <button class="btn btn-outline-info w-100 mt-auto btn-leer-mas" 
+                                        data-bs-toggle="modal" 
+                                        data-bs-target="#modalAnalisis" 
+                                        data-id="${juego.id}">
+                                    Ver Análisis
+                                </button>
                             </div>
                         </div>
-                    </div>`;
-                contenedor.innerHTML += card;
-            });
-            vincularEventosModales();
-        }
+                    </div>
+                </div>`;
+            contenedor.innerHTML += card;
+        });
+
+        vincularEventosModales();
     };
 
+    // 3. LÓGICA DEL MODAL
     const vincularEventosModales = () => {
-    const botones = document.querySelectorAll('.btn-leer-mas');
-    
-    botones.forEach(boton => {
-        boton.onclick = (e) => {
-            // CAMBIO CLAVE: usamos currentTarget para asegurar que siempre lea el ID del botón
-            const id = e.currentTarget.getAttribute('data-id');
-            
-            // Verificamos en consola si el ID está llegando (F12 para ver)
-            console.log("ID capturado:", id); 
-
-            const animeEncontrado = catalogoAnimes.find(a => a.id == id);
-            
-            if (animeEncontrado) {
-                // Inyección de textos
-                document.getElementById('modalTitulo').innerText = animeEncontrado.titulo;
-                document.getElementById('modalDescripcion').innerText = animeEncontrado.descripcion;
-                document.getElementById('modalOpinion').innerText = animeEncontrado.opinionPersonal;
+        const botones = document.querySelectorAll('.btn-leer-mas');
+        botones.forEach(boton => {
+            boton.onclick = (e) => {
+                const id = e.currentTarget.getAttribute('data-id');
+                const juego = catalogoVideojuegos.find(j => j.id == id);
                 
-                // Inyección de imagen
-                const imgModal = document.getElementById('modalImagen');
-                if (imgModal) {
-                    imgModal.src = animeEncontrado.imagen;
-                    imgModal.alt = animeEncontrado.titulo;
+                if (juego) {
+                    document.getElementById('modalTitulo').innerText = juego.titulo;
+                    document.getElementById('modalDescripcion').innerText = juego.descripcion;
+                    document.getElementById('modalOpinion').innerText = juego.opinionPersonal;
+                    
+                    const imgModal = document.getElementById('modalImagen');
+                    if (imgModal) {
+                        imgModal.src = juego.imagen;
+                        imgModal.alt = juego.titulo;
+                    }
                 }
-            } else {
-                console.error("No se encontró el anime con ID:", id);
-            }
-        };
-    });
-};
+            };
+        });
+    };
+
+    renderizarVideojuegos();
 });
