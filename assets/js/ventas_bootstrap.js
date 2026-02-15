@@ -219,6 +219,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (producto) {
                     carrito.push(producto);
                     actualizarInterfazCarrito();
+
+                    // Alerta que confirma la acción al usuario
+                    alert(`Has agregado "${producto.titulo}" al carrito.`);
                 }
             };
         });
