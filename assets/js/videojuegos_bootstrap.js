@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // 1. Crea el molde (template) de la tarjeta con HTML. 2 Define el tamaño de la columna (responsivo).9 Indica que este botón abrirá una ventana modal.10 Identifica qué modal específico debe abrirse. 11 Guarda el ID del juego para saber cuál mostrar.
             const card = `                                                        
                 <div class="col-md-6 col-lg-4">                                   
-                    <div class="card bg-dark text-white border-secondary h-100 shadow"> // Aplica el diseño oscuro y sombra a la tarjeta.
+                    <div class="card bg-dark text-white border-secondary h-100 shadow"> 
                         <img src="${juego.imagen}" class="card-img-top" alt="${juego.titulo}" style="height: 250px; object-fit: cover;"> <div class="card-body d-flex flex-column text-center p-0">
                             <div class="bg-secondary bg-opacity-25 py-3 border-bottom border-top border-primary">
                                 <h5 class="card-title text-info fw-bold mb-0">${juego.titulo}</h5> </div>
