@@ -1,35 +1,35 @@
 <!DOCTYPE html>                                                                
-<html lang="es">                                                                
-<head>                                                                          
-    <meta charset="UTF-8">                                                      
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">      
+<html lang="es">                <!-- idioma usado-->                                                            
+<head>                          <!-- da instrucciones al navegador sobre como comportarse y las herramientas que necesita-->                                                             
+    <meta charset="UTF-8">      <!-- formato para que el pc reconozca los idiomas y simbolos-->                                                   
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    <!-- es para que la pagin a sea responsiva-->  
     
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">   
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">   <!--Importa Boostrap desde internet, para usar sus clases y que la pagina se vea profesional-->
     
-    <link rel="stylesheet" href="assets/css/estilos.css">         
+    <link rel="stylesheet" href="assets/css/estilos.css">       <!-- trae el estilo que se usa en las paginas-->  
 
 </head>
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top border-bottom border-secondary">             
-        <div class="container">                                                                                     
-            <a class="navbar-brand fw-bold" href="index.html">SEKHMET</a>                                                             
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">     
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top border-bottom border-secondary">     <!-- trae el estilo que se usa en las paginas-->        
+        <div class="container">                                                                              <!-- es el contenedor, evitando que el contenido del menu no quede pegado en las orillas-->       
+            <a class="navbar-brand fw-bold" href="index.html">SEKHMET</a>                                    <!-- corresponde al logo-->                         
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">  <!-- es el boton hamburguesa para los celulares-->    
                 <span class="navbar-toggler-icon"></span>                                                           
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">                                                   
-                <ul class="navbar-nav ms-auto">                                                                     
-                    <li class="nav-item"><a class="nav-link active" href="#">Inicio</a></li>                        
+            <div class="collapse navbar-collapse" id="navbarNav">                               <!-- contenedor plegable, donde queda escondido la info de hamburguesa-->                                                      
+                <ul class="navbar-nav ms-auto">                                                 <!-- lista de enlaces en la barra de navegacion-->                                                                 
+                    <li class="nav-item"><a class="nav-link active" href="#">Inicio</a></li>     <!-- el # hace referencia a la misma pagina-->                    
                     <li class="nav-item"><a class="nav-link" href="videojuegos_bootstrap.html">Videojuegos</a></li> 
                     <li class="nav-item"><a class="nav-link" href="animes_bootstrap.html">Anime</a></li> 
                     <li class="nav-item"><a class="nav-link" href="ventas_bootstrap.html">Tienda</a></li>              
-                    <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li> 
+                    <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>                 <!-- el # hace referencia a la misma pagina--> 
                 </ul>
             </div>
         </div>
     </nav>  
 
-    <header id="heroCarousel" class="carousel slide" data-bs-ride="carousel">                                       
+    <header id="heroCarousel" class="carousel slide" data-bs-ride="carousel">          <!-- contenedor principal del carrusel-->                             
         <div class="carousel-indicators">                                                                           
             <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>      
             <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>                     
@@ -68,8 +68,8 @@
         </button>
     </header>
 
-    <main class="container my-5 text-center">                                                                       
-        <h1 class="display-5 fw-bold text-info mb-4">Explora el Contenido</h1>                                      
+    <main class="container my-5 text-center">                                   <!-- es el contenido principal centrado-->                                                             
+        <h1 class="display-5 fw-bold text-info mb-4">Explora el Contenido</h1>  <!-- titulo principal, centrado, de color simialr al celeste-->                                      
         <div class="row g-4 justify-content-center">                                                                
             <div class="col-12 col-md-5">                                                                           
                 <div class="card bg-dark text-light h-100 p-4 shadow">                                              
@@ -132,8 +132,8 @@
         </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>                               
-    <script src="assets/js/main.js"></script>
-    <script src="assets/js/home.js"></script>                                                                                                
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>  <!--esta linea es importante para que el menu de hamburguesa se abra o para que los modales se vean en la pantalla-->                             
+    <script src="assets/js/main.js"></script>           <!--es el encargado de los eventos que estan en la pagina-->
+    <script src="assets/js/home.js"></script>           <!--encargado de buscar en las listas de anime y ponerlos automaticamente en html, para no tener que escribirlo manualmente-->                                                                                                        
 </body>
 </html>

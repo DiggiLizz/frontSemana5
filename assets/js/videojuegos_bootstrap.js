@@ -1,14 +1,19 @@
 document.addEventListener('DOMContentLoaded', () => {
     
-    // 1. DEFINICIÓN DE DATOS
+    // 1. DEFINICIÓN DE DATOS, la estructura de cada videojuego es igual, por lo que solo se comenta una
     const catalogoVideojuegos = [
         {
-            id: 1,
-            titulo: "Hollow Knight: SilkSong",
+            id: 1,                                      // id unico 
+            titulo: "Hollow Knight: SilkSong",          // nombre del video jeugo
+            // descripcion del video juego
             descripcion: "Silksong es la épica secuela de Hollow Knight, la galardonada aventura de acción. Viaja a tierras inexploradas, descubre poderes nuevos, lucha contra vastas hordas de bichos y bestias y descubre secretos relacionados con tu naturaleza y tu pasado.",
+            // opinion personal del video juego
             opinionPersonal: "SilkSong me ha resultado muy entretenido y desafiante. Es un juego que requiere coordinación, memoria y un buen control, ya que se requiere poder jugar en zonas muy pequeñas, con enemigos que te atacan por todos lados.",
+            // ubicacion de la imagen 
             imagen: "assets/imagenes/PortadaSilksong.jpg",
+            // texto alternativo de la imagen
             alt: "Portada de Hollow Knight: SilkSong",
+            // link que da mas informacion sobre el videojuego
             link: "https://store.steampowered.com/app/1030300/Hollow_Knight_Silksong/"
 
         },
@@ -38,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
             opinionPersonal: "Es increíble y desafiante. Me falta poco para completarlo al 120%.",
             imagen: "assets/imagenes/PortadaHollow.avif",
             alt: "Portada de Hollow Knight",
-            link: "https://hollow-knight.softonic.com/"
+            link: "https://hollow-knight.softonic.com/" // 
             
         },
         {
@@ -64,58 +69,59 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
 
     // 2. FUNCIÓN DE RENDERIZADO
-    const renderizarVideojuegos = () => {
-        const contenedor = document.getElementById('contenedor-videojuegos');
-        if (!contenedor) return;
+    const renderizarVideojuegos = () => {                                         // Define la función para mostrar los juegos en pantalla.
+        const contenedor = document.getElementById('contenedor-videojuegos');     // Busca en el HTML el lugar donde irán las tarjetas.
+        if (!contenedor) return;                                                  // Si no encuentra el contenedor, detiene la función.
 
-        contenedor.innerHTML = "";
+        contenedor.innerHTML = "";                                                // Limpia el contenido previo para evitar que se dupliquen.
         
-        catalogoVideojuegos.forEach(juego => {
-            const card = `
-                <div class="col-md-6 col-lg-4">
-                    <div class="card bg-dark text-white border-secondary h-100 shadow">
-                        <img src="${juego.imagen}" class="card-img-top" alt="${juego.titulo}" style="height: 250px; object-fit: cover;">
-                        <div class="card-body d-flex flex-column text-center p-0">
+        catalogoVideojuegos.forEach(juego => {                                    // Inicia un ciclo para recorrer cada juego del catálogo.
+            // 1. Crea el molde (template) de la tarjeta con HTML. 2 Define el tamaño de la columna (responsivo).9 Indica que este botón abrirá una ventana modal.10 Identifica qué modal específico debe abrirse. 11 Guarda el ID del juego para saber cuál mostrar.
+            const card = `                                                        
+                <div class="col-md-6 col-lg-4">                                   
+                    <div class="card bg-dark text-white border-secondary h-100 shadow"> // Aplica el diseño oscuro y sombra a la tarjeta.
+                        <img src="${juego.imagen}" class="card-img-top" alt="${juego.titulo}" style="height: 250px; object-fit: cover;"> <div class="card-body d-flex flex-column text-center p-0">
                             <div class="bg-secondary bg-opacity-25 py-3 border-bottom border-top border-primary">
-                                <h5 class="card-title text-info fw-bold mb-0">${juego.titulo}</h5>
-                            </div>
+                                <h5 class="card-title text-info fw-bold mb-0">${juego.titulo}</h5> </div>
                             <div class="p-3 d-flex flex-column flex-grow-1">
                                 <button class="btn btn-outline-info w-100 mt-auto btn-leer-mas" 
-                                        data-bs-toggle="modal" 
-                                        data-bs-target="#modalAnalisis" 
-                                        data-id="${juego.id}">
+                                        data-bs-toggle="modal"                    
+                                        data-bs-target="#modalAnalisis"           
+                                        data-id="${juego.id}">                    
                                     Ver Análisis
                                 </button>
                             </div>
                         </div>
                     </div>
                 </div>`;
-            contenedor.innerHTML += card;
+            contenedor.innerHTML += card;                                         // Agrega la tarjeta terminada al contenedor del HTML.
         });
 
-        vincularEventosModales();
+        vincularEventosModales();                                                 // Activa los clics de los botones recién creados.
     };
 
     // 3. LÓGICA DEL MODAL
-    const vincularEventosModales = () => {
-        const botones = document.querySelectorAll('.btn-leer-mas');
-        botones.forEach(boton => {
-            boton.onclick = (e) => {
-                const id = e.currentTarget.getAttribute('data-id');
-                const juego = catalogoVideojuegos.find(j => j.id == id);
+    const vincularEventosModales = () => {                                          
+        const botones = document.querySelectorAll('.btn-leer-mas');                 // Busca todos los botones "Ver Análisis" que se crearon en la función anterior.
+        botones.forEach(boton => {                                                  // Recorre cada botón para asignarle la lógica del clic
+            boton.onclick = (e) => {                                                // Cuando el usuario hace clic en un botón      
+                const id = e.currentTarget.getAttribute('data-id');                 // Obtiene el ID único del juego desde el atributo 'data-id' del botón.
+                const juego = catalogoVideojuegos.find(j => j.id == id);            // Busca en el catálogo de videojuegos el objeto que coincida con ese ID.
                 
-                if (juego) {
+                if (juego) {                                                                        // Si el juego existe en el catálogo
+                    // Actualiza el título, la descripción y la opinión personal dentro del Modal.
                     document.getElementById('modalTitulo').innerText = juego.titulo;
                     document.getElementById('modalDescripcion').innerText = juego.descripcion;
                     document.getElementById('modalOpinion').innerText = juego.opinionPersonal;
                     
-                    const linkModal = document.getElementById('modalLink');
-                    if (linkModal) {
-                        linkModal.href = juego.link; 
+                    const linkModal = document.getElementById('modalLink');     // Busca el elemento del enlace en el modal
+                    if (linkModal) {                                            // si se encuentra el link
+                        linkModal.href = juego.link;                            // Cambia la dirección (href) del enlace hacia la web del juego.
                     }
 
-                    const imgModal = document.getElementById('modalImagen');
-                    if (imgModal) {
+                    const imgModal = document.getElementById('modalImagen');    // Busca el elemento de la imagen en el modal
+                    if (imgModal) {                                             // si se encuentra la imagenden del modal
+                        // Cambia la imagen y su texto alternativo para que coincidan con el juego.
                         imgModal.src = juego.imagen;
                         imgModal.alt = juego.titulo;
                     }
@@ -124,5 +130,5 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-    renderizarVideojuegos();
+    renderizarVideojuegos();            // Llama a la función para que los juegos se dibujen en el HTML apenas carga la página.
 });
