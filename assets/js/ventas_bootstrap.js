@@ -7,13 +7,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const catalogoFiguras = [
         {
             id: 1,                                                                                  // Identificador único para cada figura en el catálogo
-            titulo: Estatua Zenki
+            titulo: "Estatua Zenki"
             precio: 45000,                                                                          // Precio de la figura en pesos chilenos
             imagen: "assets/imagenes/figura_zenki.jpg",                                             // Ruta de la imagen de la figura para mostrar en la tienda
             altText: "Figura coleccionable de Zenki en postura de ataque con detalles en relieve"   // Texto alternativo para la imagen de la figura, lo que mejora la accesibilidad y proporciona una descripción de la imagen en caso de que no se pueda cargar o para usuarios con discapacidades visuales.
         },
         {   // no se comentará cada figura, ya que poseen la misma estructura de datos 
-            id: 2,  // 
+            id: 2,  
             titulo: "Estatua EVA-01 Test Type",
             precio: 85000,
             imagen: "assets/imagenes/figura_eca01.webp",
