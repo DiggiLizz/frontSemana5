@@ -1,68 +1,70 @@
 <!DOCTYPE html>                                                                     
-<html lang="es">                                                                    
-<head>                                                                               
-    <meta charset="UTF-8">                                                         
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">         
+<html lang="es">            <!-- idioma usado-->                                                                 
+<head>                      <!-- da instrucciones al navegador sobre como comportarse y las herramientas que necesita-->                                                            
+    <meta charset="UTF-8">  <!-- formato para que el pc reconozca los idiomas y simbolos-->                                                         
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">   <!-- es para que la pagin a sea responsiva-->      
     <title>Videojuegos - Sekhmet (Semana 5)</title>
     
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">  <!--Importa Boostrap desde internet, para usar sus clases y que la pagina se vea profesional-->
     
-    <link rel="stylesheet" href="assets/css/estilos.css">    
+    
+    <link rel="stylesheet" href="assets/css/estilos.css">     <!-- trae el estilo que se usa en las paginas-->
 
 </head>
-<body>
+<body>      <!-- es todo lo que el usuario puede ver-->
                     
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top border-bottom border-secondary">
-        <div class="container">
-            <a class="navbar-brand fw-bold" href="index.html">SEKHMET</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <div class="container">                             <!-- es el contenedor, evitando que el contenido del menu no quede pegado en las orillas-->
+            <a class="navbar-brand fw-bold" href="index.html">SEKHMET</a>  <!-- corresponde al logo-->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">    <!-- es el boton hamburguesa para los celulares--> 
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
+            <div class="collapse navbar-collapse" id="navbarNav">           <!-- contenedor plegable, donde queda escondido la info de hamburguesa--> 
+                <ul class="navbar-nav ms-auto">                             <!-- lista de enlaces en la barra de navegacion-->
                     <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>                 
-                    <li class="nav-item"><a class="nav-link active" href="#">Videojuegos</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="#">Videojuegos</a></li>           <!-- el # hace referencia a la misma pagina--> 
                     <li class="nav-item"><a class="nav-link" href="animes_bootstrap.html">Anime</a></li>   
                     <li class="nav-item"><a class="nav-link" href="ventas_bootstrap.html">Tienda</a></li>                
-                    <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>             <!-- el # hace referencia a la misma pagina--> 
                 </ul>
             </div>
         </div>
     </nav>
 
-    <main class="container my-5">
-        <h1 class="text-center mb-5 display-4 fw-bold text-info">Análisis de Videojuegos</h1>
+    <main class="container my-5">            <!-- es el contenido principal--> 
+        <h1 class="text-center mb-5 display-4 fw-bold text-info">Análisis de Videojuegos</h1>   <!-- titulo principal, centrado, de color simialr al celeste-->
 
-        <div class="row g-4" id="contenedor-videojuegos">
+        <div class="row g-4" id="contenedor-videojuegos">  <!--fila organizadora, con columnas con espacio entre ellas, mas un id especifico -->
             </div>
 
     </main>
 
-    <div class="modal fade" id="modalAnalisis" tabindex="-1" aria-hidden="true">
+    <!-- ventana emergente modal--> 
+    <div class="modal fade" id="modalAnalisis" tabindex="-1" aria-hidden="true">   <!-- contenedor principal con fade para efecto de desvanecimiento suave, con nombre de pila (id) asi el boton sabe a quien llamar-->
         <div class="modal-dialog modal-dialog-centered modal-lg"> <div class="modal-content bg-dark text-light border-info">
-                <div class="modal-header border-info">
+                <div class="modal-header border-info">                               <!-- cabezal de la ventana que contiene el titulo y el boton X para cerrar-->
                     <h5 class="modal-title text-info" id="modalTitulo"></h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 
-                <div class="modal-body">
+                <div class="modal-body">                <!-- cuerpo de la ventana, dividido en 2-->
                     <div class="row align-items-center">
-                        <div class="col-md-5 mb-3 mb-md-0">
+                        <div class="col-md-5 mb-3 mb-md-0">   <!--donde va la imagen del videojuego-->
                             <img id="modalImagen" src="" alt="" class="img-fluid rounded border border-info shadow">
                         </div>
                         
-                        <div class="col-md-7">
-                            <h6 class="text-secondary fw-bold">Descripción</h6>
-                            <p id="modalDescripcion" class="small"></p>
+                        <div class="col-md-7">                                      <!-- zona donde va el texto -->
+                            <h6 class="text-secondary fw-bold">Descripción</h6>     <!-- zona de descripcion-->
+                            <p id="modalDescripcion" class="small"></p>             <!-- espera que js le mande la informacion-->
                             <hr class="border-secondary">
-                            <h6 class="text-secondary fw-bold">Opinión</h6>
-                            <p id="modalOpinion" class="small"></p>
+                            <h6 class="text-secondary fw-bold">Opinión</h6>         <!-- zona de la opinion personal-->
+                            <p id="modalOpinion" class="small"></p>                 <!-- espera que js le mande la informacion-->
                         </div>
                     </div>
                     </div>
 
-                <div class="modal-footer border-top-0">
-                    <a id="modalLink" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-primary w-100 fw-bold">
+                <div class="modal-footer border-top-0">             v
+                    <a id="modalLink" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-primary w-100 fw-bold">    <!-- boton que lleva a la pagina de mas informacion- de momento a la misma pag-->
                     Más información
                     </a>
                 </div>
@@ -70,10 +72,10 @@
         </div>
     </div>
 
-    <footer id="contacto" class="bg-dark text-center py-5 border-top border-secondary mt-5">
-        <div class="container">
-            <p>© 2026 Videojuegos <strong>Sekhmet</strong></p>
-            <p>Contacto: <a href="mailto:lili.zapata@duocuc.cl" class="text-info text-decoration-none">lili.zapata@duocuc.cl</a></p>
+    <footer id="contacto" class="bg-dark text-center py-5 border-top border-secondary mt-5">                        <!-- sirve para que cuando se haga click en el menu la pagina llegue aqui abajo con fondo oscur y centrado el texto, genera una linea gris para separar contendo fianl-->
+        <div class="container">                                                                                     <!-- contendor que evita que la infromacion se desvorde y la mantiene alineada-->
+            <p>© 2026 Videojuegos <strong>Sekhmet</strong></p>                                                      <!-- informacion de los derechos resaltado--> 
+            <p>Contacto: <a href="mailto:lili.zapata@duocuc.cl" class="text-info text-decoration-none">lili.zapata@duocuc.cl</a></p>  <!---redirige al enlace no habilidato ahora--> 
         </div>
     </footer>
 

@@ -71,14 +71,14 @@
     <main class="container my-5 text-center">                                   <!-- es el contenido principal centrado-->                                                             
         <h1 class="display-5 fw-bold text-info mb-4">Explora el Contenido</h1>  <!-- titulo principal, centrado, de color simialr al celeste-->                                      
         <div class="row g-4 justify-content-center">                                                                
-            <div class="col-12 col-md-5">                                                                           
-                <div class="card bg-dark text-light h-100 p-4 shadow">                                              
-                    <h3>VIDEOJUEGOS</h3>                                                                            
+            <div class="col-12 col-md-5">                                       <!--en celulares se vera una sola columna y en tablet dos clumnas a cada lado-->                                                                  
+                <div class="card bg-dark text-light h-100 p-4 shadow">          <!-- fondo oscuro, con texto gris, donde las tarjetas tienen el mismo alto, y con una sombra para que parezca que sea 3d-->                                             
+                    <h3>VIDEOJUEGOS</h3>                                        <!-- informacion correspondiente a video juegos con su boton para acceder-->                                    
                     <p>Análisis de juegos, desde clásicos hasta novedades.</p>                                      
                     <a href="videojuegos_bootstrap.html" class="btn btn-primary mt-3">Ver Videojuegos</a>           
                 </div>
             </div>
-            <div class="col-12 col-md-5">                                                                           
+            <div class="col-12 col-md-5">                                       <!-- misma configuracion que en video juegos, pero para animes-->                                                         
                 <div class="card bg-dark text-light h-100 p-4 shadow">                                             
                     <h3>ANIME</h3>                                                                                  
                     <p>Reseñas y recomendaciones del mundo del anime.</p>                                           
@@ -88,9 +88,9 @@
         </div>
     </main>
 
-    <section class="container mt-5">                                                
-        <h2 class="text-center text-info mb-4">Últimas Novedades</h2>
-        <div id="novedades-dinamicas" class="row justify-content-center g-4">
+    <section class="container mt-5">                                            <!-- contenedor para las novedades para que js lo llene-->                                             
+        <h2 class="text-center text-info mb-4">Últimas Novedades</h2>           <!-- se usa la misma configuracion del texto -->
+        <div id="novedades-dinamicas" class="row justify-content-center g-4">   <!-- texto justificado-->
             </div>
     </section>
 
@@ -104,24 +104,24 @@
                         
                         <form id="form-colaboradores"> 
                             <div class="mb-3 text-start"> 
-                                <label for="nombre" class="form-label">Nombre o Nickname</label> 
+                                <label for="nombre" class="form-label">Nombre o Nickname</label> <!-- informacion donde sale el nombre, la otra linea es para que se pueda escribir-->
                                 <input type="text" class="form-control bg-dark text-white border-secondary" id="nombre" required placeholder="Tu nombre"> 
                             </div>
                             <div class="mb-3 text-start">
-                                <label for="correo" class="form-label">Correo Electrónico</label> 
+                                <label for="correo" class="form-label">Correo Electrónico</label> <!-- mismo principio que en nombre-->
                                 <input type="email" class="form-control bg-dark text-white border-secondary" id="correo" required placeholder="tu@email.com"> 
                             </div>
                             <div class="mb-3 text-start"> 
-                                <label for="interes" class="form-label">¿Cómo quieres participar?</label> 
+                                <label for="interes" class="form-label">¿Cómo quieres participar?</label> <!-- oregunta de participacion-->
                                 <select class="form-select bg-dark text-white border-secondary" id="interes"> 
-                                    <option value="comentarista">Ser comentarista de Anime</option> 
-                                    <option value="colaborador">Colaborar con reseñas de juegos</option> 
+                                    <option value="comentarista">Ser comentarista de Anime</option>         <!-- opcion para poder elergir-->
+                                    <option value="colaborador">Colaborar con reseñas de juegos</option>    <!-- opcion para poder elergir-->
                                 </select>
                             </div>
-                            <button type="submit" class="btn btn-primary w-100">Enviar Solicitud</button> 
+                            <button type="submit" class="btn btn-primary w-100">Enviar Solicitud</button>   <!-- boton que permite enviar la solicitud con js-->
                         </form>
 
-                        <div id="mensaje-exito" class="alert alert-success mt-3 d-none"> 
+                        <div id="mensaje-exito" class="alert alert-success mt-3 d-none">                    <!-- alerta usando el nick o nombre de envio exitoso-->
                             ¡Gracias! Tu solicitud ha sido enviada. 
                         </div>
                     </div>

@@ -120,6 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const totalCarrito = document.getElementById('total-carrito');              // Elemento donde se mostrará el total acumulado del carrito 
     const formBusqueda = document.getElementById('form-busqueda');              // Formulario de búsqueda para que el usuario pueda filtrar los productos disponibles en la tienda según sus intereses
     const btnFinalizar = document.getElementById('btn-finalizar');              // Botón para finalizar la compra  
+    const btnVaciar = document.getElementById('btn-vaciar');                    // boton para vaciar el carrito
     
     // 4. FUNCIONES DE RENDERIZADO
     const renderizarTienda = (productos) => {       // función que recibe una lista de productos como parámetro
@@ -203,6 +204,7 @@ document.addEventListener('DOMContentLoaded', () => {
             listaCarrito.appendChild(item);                                // Pega el nuevo ítem creado dentro de la lista real.
             sumaTotal += prod.precio;                                      // Suma el precio del producto al acumulador.
         });
+        
 
         totalCarrito.innerText = `$${sumaTotal.toLocaleString('es-CL')}`;  // Escribe el resultado final de la suma en pantalla.
         vincularBotonesEliminar();                                         // Activa los botones X para que realmente puedan borrar.
@@ -245,6 +247,20 @@ document.addEventListener('DOMContentLoaded', () => {
             const termino = document.getElementById('input-busqueda').value.toLowerCase().trim();        // captura el tecto ingresado, y lo cambia a minusculas y quita espacio vacios    
             const filtrados = catalogoFiguras.filter(p => p.titulo.toLowerCase().includes(termino));     // filtra el catalogo, creando una nueva lista que contenga el texto bsucado     
             renderizarTienda(filtrados);                                                                 // dibuja la tienda, pero solo con las imagenes encontradas
+        });
+    }
+
+    if (btnVaciar) {                                                  // valida el boton vaciar
+        btnVaciar.addEventListener('click', () => {                   // sise hace un clik en el boton sigue el siguiente if
+            if (carrito.length === 0) {                               // valida si el carro esta vacio, arroja una alerta
+                alert("El carrito ya está vacío.");
+                return;
+            }
+            
+            // Acción: Resetear el array y actualizar la vista
+            carrito = [];                                           // deja el carrito vacio
+            actualizarInterfazCarrito();                            // se actualiza la interfaz del carrito
+            alert("El carrito ha sido vaciado.");                   // alerta de vaciado del carrito
         });
     }
 

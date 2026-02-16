@@ -73,3 +73,20 @@ Fetch API: El sistema ahora puede "ir al laboratorio" (archivo novedades.json) a
 Easter Egg: Presiona la tecla "V" para activar el Modo Neón. Es un pequeño truco de ingeniería que cambia la estética de los títulos al instante.
 
 Formulario de Colaboradores: Captura de datos en tiempo real con validación dinámica.
+
+* 👾 Semana 6: Homestasia Y gestion de recursos
+Gestión de estado y lógica de recursos
+
+Esta semana la página dejó de ser solo informativa, y paso a ser una aplicación Web funcional que recuerda la interacción con el cliente, lo que se ve refleajado en el modulo eCommerce.
+ - El carrito es un Array dinámico, capaz de cambiar contantemente
+al agregar, quitar, vaciar o finalizar una compra. Siendo capaz de 
+calcular el total económico acumulado de forma reactiva.
+
+ - Manipulación avanzada del DOM: los productos ya no son escrito a mano en HTML sino que se usa JS para trasferir los datos, inyectando las tarjetas (cards) al contenedor vacio mediante Template Literals, Esto permite que al agregar productos al JS, la tienda creza automaticamente, sin tener que tocal el HTML, reforzando la única responsabilidad.
+
+ - Lógica de persistencia: el carrito es capaz de recordar mientras se está en la pagina de ventas los productos ingresados.
+
+ - Refactorización y limpieza de código: Se separaron funciones, el código de la información de anime, video juegos y ventas, ya no esta dentro de HTML, sino que de JS independientes, con su vinculación correspondiente. Lo que facilita su mantenimiento y escalabilidad futura.
+
+ - Validaciones y control de errores: se usan estructuras de control (if) y comparadores estrictos (===) para evitar la presencia de errores de referencia nula, y alertas para que el usuario sepa que esta pasado. 
+
