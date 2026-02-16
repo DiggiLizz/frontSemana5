@@ -274,11 +274,11 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             // Muestra un mensaje de éxito usando el monto final que ya está calculado en la pantalla.
-            alert(`¡Gracias por tu compra por un total de: ${totalCarrito.innerText}!`);
+            alert(`¡Gracias por tu compra, te enviaremos un email para el despacho`);
 
             // Por esto (Validación de cortocircuito):
             const totalTexto = totalCarrito ? totalCarrito.innerText : "$0";
-            alert(`¡Gracias por tu compra por un total de: ${totalTexto}!`);
+            alert(`¡Tu compra es por un total de: ${totalTexto}!`);
             
             carrito = [];                                           // Vacía el array del carrito (limpieza de datos en memoria).
             actualizarInterfazCarrito();                            // Refresca la pantalla para que la lista visual aparezca vacía.
