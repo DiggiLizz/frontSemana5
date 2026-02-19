@@ -1,75 +1,32 @@
-// animes_bootstrap.js - Responsabilidad: Gestionar el catálogo de la página de Animes
-
 document.addEventListener('DOMContentLoaded', () => {
-    
-    // 1. Definición de Datos (Aquí puedes agregar más animes fácilmente)
-    const catalogoAnimes = [
-        {
-            id: 1, // ID único para cada anime
-            titulo: "Neon Genesis Evangelion", // Título del anime
-            // descripción breve del anime
-            descripcion: "En el año 2015 la humanidad intenta recuperarse del «Segundo impacto», una catástrofe provocada por la caída de un meteorito en la Antártida años atrás. Tras sobrevivir al deshielo de los polos y a una inmediata sucesión de guerras sin fin, los seres humanos deben enfrentarse a un nuevo y mortal peligro. Unos misteriosos seres denominados Ángeles aparecen de improvisto llevando la destrucción por donde pasan. Para frenar esta amenaza, el científico Gendoh Ikari ha desarrollado los Evangelion, gigantescos robots que se convierten en la última línea de defensa para la humanidad. Uno de los primeros pilotos escogidos recibe el nombre de «Tercer Elegido». Shinji Ikari, hijo que Gendoh abandonó, se verá obligado a sondear las profundidades de sus propios recursos internos y así encontrar el valor y la fuerza, no sólo para luchar… sino para sobrevivir o arriesgarse a perderlo todo.",
-            opinionPersonal: "Es anime clasico de los 90s, con robots (que al final no lo son), angeles apocalipticos, adolescentes con problemas psicológicos de distinta indole. Tematicas existencialistas que te dejan pensando, realmente que es lo que pasó. La remasterización de este anime, también la encuntro buena. Es un anime que se debe ver con calma y atención a los detalles.",
-            imagen: "assets/imagenes/PortadaNGE.jpg", // ruta de imagen
-            altText: "Portada oficial del videojuego Hollow Knight Silksong mostrando a Hornet", // texto alternativo para la imagen
-            link: "https://www.youtube.com/watch?v=_FmUpViWDX4" // enlace a video relacionado
-        },
-        {   // la estructura se repite en cada anime, lo que facilita la adición de nuevos animes al catálogo            
-            id: 2,
-            titulo: "Estan Arrestados",
-            descripcion: "Natsumi Tsujimoto, una joven policía, se traslada a la prefectura de Bokuto. Allí conoce a Miyuki, su nueva compañera. En un inicio, ambas no se llevan bien porque Natsumi cree que son demasiado distintas para congeniar, pero no tardan mucho en aprender a trabajar como un equipo. Quieran o no hay cosas que también las unen y, tras su primera misión, se da cuenta de que Miyuki puede ser un gran apoyo. Después de esto, su día a día se convierte en una rutina donde hay un poco de todo: ayudar a gatos y niños en peligro, detener a infractores, perseguir criminales y hasta prestar atención a los asuntos personales. Cada día es una novedad, así que le echarán ganas para afrontarlo.",
-            opinionPersonal: "Un anime a mi gusto genial, buen desarrollo de los personajes, muy comico sin ser burdo, diversas situaciones que te hacen reír. En si es un anime con una historia completa, pero la mayoria de los capitulos tienen temática, ahora para poder entender bien algunas de las relaciones interpersonales, es necesario ver varios capítulos para podor entender bien como se desarrollaron. Los OVAs son igualmente entrenido, y la tercera temporada, si alguien la tiene completa, me gustaría verla.",
-            imagen: "assets/imagenes/PortadaEstanArrestados.jpg",
-            altText: "Portada oficial del anime Estan Arrestados con Natsumi y Miyuki",
-            link: "https://www.youtube.com/watch?v=qsE_DbAjYOw"
-        },
-        {
-            id: 3,
-            titulo: "Zenki",
-            descripcion: "La historia nos cuenta las aventuras de Cherry Night cuyo antepasado era conocidos por ser un poderoso hechicero, Ozuno combatía con los demonios con la ayuda de su fiel demonio Zenki, después de cumplir con su misión al ver que Zenki se volvía más y más violento, decide sellarlo hasta que sus servicios sean requeridos de nuevo. Luego de mucho tiempo de tranquilidad, en una ciudad donde vivía el gran hechicero Ozuno, dos monjes en busca de poder, deciden usurpar un templo con un sello en el, para encontrar ese nuevo poder. Dentro se encontraba a lo que se llama «las semillas del mal», son semillas que con los deseos de personas malas, se alimentan de ellos y los transforman en demonios. Estos demonios primero intentan atacar a Cherry y a su familia, ella tenía poco conocimiento de la magia, pero al verse ella y su abuela en peligro, el pilar donde se encontraba sellado el demonio Zenki, le otorga un brazalete con el cual despierta al demonio.",
-            opinionPersonal: "Este anime tambíen tiene escenas muy comicas a mi gutso, pero tambien tiene su toque de magia y acción. Zenki es un demonio muy poderoso que protege a Cherry, aunque la hace rabiar muchas veces porque no le hace caso. Muy buenos villanos, y buena trama en general.",
-            imagen: "assets/imagenes/PortadaZenki.jpg",
-            altText: "Portada oficial del anime Zenki, mostrando a Zenki",
-            link: "https://www.youtube.com/watch?v=tTyqk9yArqw"
-        },
-        {
-            id: 4,
-            titulo: "Ranma 1/2",
-            descripcion: "Ranma 1/2 es una serie de anime que sigue las aventuras de Ranma Saotome, un joven que tras caer en un pozo mágico se convierte en una chica. La historia combina comedia, acción y romance mientras Ranma intenta resolver sus problemas con la ayuda de su novia Akane.",
-            opinionPersonal: "Este anime, trae mezcla de artes marciales, comedia y romance. Las situaciones cómicas que surgen de la transformación de Ranma son muy entretenidas, esta muy presente el echi, por lo que se debe tener cuidado con los nños. Si te gustan las artes marciales y la comedia, este anime es para ti.",
-            imagen: "assets/imagenes/PortadaRanma12.jpg",
-            altText: "Portada oficial del anime Ranma 1/2, mostrando a Ranma y a otros personajes principales",
-            link: "https://www.youtube.com/watch?v=pZ3qsLzssKI"
-        },
-        {
-            id: 5,
-            titulo: "Escaflowne",
-            descripcion: "Al igual que casi todo el mundo, Hitomi Kanzaki cree ser alguien normal. Ella es una estudiante y miembro del club de atletismo de su instituto. Sin embargo, aparte de amar el deporte también está enamorada del capitán, Akira Amano. Durante una práctica, Hitomi contempla unas visiones sobre un desconocido mundo en guerra. El incidente parecía un simple sueño, así que decidió olvidarlo. Más adelante, al enterarse de la marcha del capitán del país, Hitomi decide declararse y pedirle su primer beso si logra bajar de los 13 segundos en una carrera. Lamentablemente la aparición repentina de un joven misterioso y un dragón impide a Hitomi terminar la carrera. Cuando este joven, Van Fanel, logra derrotar al monstruo, Hitomi es teletransportada junto a él hacia otro mundo que recibe el nombre de Gaia. En esa tierra mágica, Hitomi, junto a Van, se verán implicados en un conflicto que decidirá el destino de Gaia.",
-            opinionPersonal: "Anime que mezcla mechas, fantasía y romance. Solo se que me gusta, pero ya van varios años desde que lo vi por primera vez, por lo que no pordría dar una opinión mas actualizada. Lo que si para que lo veas, te dejo la versión remasterizada para que puedas ver. Si logras encontrar la original, podras ver la difencia ademas de la calidad de la imagen, como eran dibujados hace años los personajes.",
-            imagen: "assets/imagenes/PortadaEscaflowne.jpg",
-            altText: "Portada oficial del anime Escaflowne, mostrando a Van Fanel y a otros personajes principales",
-            link: "https://www.youtube.com/watch?v=pU-k30r9jeE"
-        },
-        {
-            id: 6,
-            titulo: "Digimon",
-            descripcion: "La historia se centra en siete niños de Japón, que son transportados al Mundo digital después de encontrar unos Digivice y ser arrastrados por una gran ola, llegando así a la Isla File. Allí encuentran a sus compañeros Digimon, y con su ayuda, aprenderán a sobrevivir pese a las adversidades de estar en un mundo desconocido. Conforme avanza la serie, descubren que son los Niños elegidos. A mitad de la serie se integra el octavo niño elegido con su Digimon. Los ocho niños tendrán que luchar contra las fuerzas de la oscuridad que quieren apoderarse del mundo digital y el mundo real.",
-            opinionPersonal: "Primer anime de la franquicia Digimon, y a gusto personal, el mejor de todos. Cada franquicia tiene su encanto, pero este es el que tiene la mejor historia, desarrollo de personajes y la mejor música. También tocan temas sensibles como la pérdida, la amistad y el crecimiento personal. Y como todo anime de los 90s, tiene su toque de comedia que no está de más.",
-            imagen: "assets/imagenes/PortadaDigimon.avif",
-            altText: "Portada oficial del anime Digimon, mostrando a los personajes principales",
-            link: "https://www.youtube.com/watch?v=7PXb7ZHwITg"
-        }
-    ];
+    const contenedor = document.getElementById('contenedor-animes');
 
-    // 2. Función para renderizar las tarjetas
-    const renderizarAnimes = () => {                                        // Seleccionamos el contenedor donde se mostrarán las tarjetas
-        const contenedor = document.getElementById('contenedor-animes');    // Verificamos que el contenedor exista antes de intentar modificarlo
-        if (contenedor) {                                                   // Si el contenedor existe, procedemos a renderizar las tarjetas
-            contenedor.innerHTML = "";                                      // Limpiamos el contenedor antes de agregar las nuevas tarjetas para evitar duplicados
-            catalogoAnimes.forEach(anime => {                               // Iteramos sobre cada anime en el catálogo para crear su tarjeta correspondiente
-                // Aquí se crea la estructura HTML de cada tarjeta utilizando template literals para insertar los datos del anime
-                const card = `                                              
-                    <div class="col-md-6 col-lg-4">
+    // 1. Función para cargar datos (FETCH API)
+    const cargarAnimes = async () => {
+        try {
+            const respuesta = await fetch('assets/data/anime.json'); // Ruta al nuevo archivo JSON
+            if (!respuesta.ok) throw new Error("No se pudo obtener la lista de animes");
+            
+            const datos = await respuesta.json();
+            
+            // Pasamos los datos recibidos a la función de renderizado
+            renderizarAnimes(datos); 
+        } catch (error) {
+            console.error("Error en la carga:", error);
+            if (contenedor) {
+                contenedor.innerHTML = `<p class="text-danger text-center">Lo sentimos, no pudimos cargar los animes en este momento.</p>`;
+            }
+        }
+    };
+
+    // 2. Función para renderizar las tarjetas (Recibe el catálogo por parámetro)
+    const renderizarAnimes = (catalogoAnimes) => { 
+        if (contenedor) {
+            contenedor.innerHTML = ""; 
+            
+            catalogoAnimes.forEach(anime => {
+                const card = `
+                    <div class="col-md-6 col-lg-4 mb-4">
                         <div class="card bg-dark text-white border-secondary h-100 shadow">
                             <img src="${anime.imagen}" class="card-img-top" alt="${anime.titulo}" style="height: 250px; object-fit: cover;">
                             <div class="card-body d-flex flex-column text-center p-0">
@@ -87,44 +44,44 @@ document.addEventListener('DOMContentLoaded', () => {
                             </div>
                         </div>
                     </div>`;
-                contenedor.innerHTML += card;       // Agregamos la tarjeta al contenedor, utilizando += para concatenar cada nueva tarjeta con las anteriores, asegurando que todas se muestren correctamente sin sobrescribir las anteriores
+                contenedor.innerHTML += card;
             });
-            vincularEventosModales();               // Después de renderizar las tarjetas, vinculamos los eventos a los botones para que funcionen correctamente al hacer clic en "Leer análisis"
+
+            // IMPORTANTE: Pasamos el catálogo a la función de eventos para que pueda buscar el ID
+            vincularEventosModales(catalogoAnimes);
         }
     };
 
-    const vincularEventosModales = () => {                      // Seleccionamos todos los botones "Leer análisis" que se han generado dinámicamente
-    const botones = document.querySelectorAll('.btn-leer-mas'); // Verificamos que se hayan encontrado botones antes de intentar vincular eventos
-    
-    botones.forEach(boton => {              // Iteramos sobre cada botón para agregar un evento de clic que abrirá el modal con la información correspondiente al anime seleccionado
-        boton.onclick = (e) => {            // Al hacer clic en el botón, se captura el evento y se obtiene el ID del anime asociado al botón utilizando el atributo data-id. Es importante usar e.currentTarget para asegurarnos de que estamos obteniendo el ID del botón correcto, incluso si hay elementos anidados dentro del botón.
-            const id = e.currentTarget.getAttribute('data-id');   // Obtenemos el ID del anime desde el atributo data-id del botón que se ha clickeado, lo que nos permitirá identificar qué anime mostrar en el modal.
-            
-            console.log("ID capturado:", id);                               // Este console.log es útil para verificar que estamos obteniendo el ID correcto del botón clickeado, lo que nos ayudará a depurar cualquier problema relacionado con la identificación del anime seleccionado. 
-
-            const animeEncontrado = catalogoAnimes.find(a => a.id == id);   // Buscamos en el catálogo de animes el anime que tiene el ID que coincide con el ID obtenido del botón clickeado
-            
-            if (animeEncontrado) {                                                                           // Si encontramos el anime correspondiente al ID, procedemos a llenar el modal con la información de ese anime.
-                document.getElementById('modalTitulo').innerText = animeEncontrado.titulo;                   // Actualizamos el título del modal con el título del anime encontrado.
-                document.getElementById('modalDescripcion').innerText = animeEncontrado.descripcion;         // Actualizamos la descripción del modal con la descripción del anime encontrado.
-                document.getElementById('modalOpinion').innerText = animeEncontrado.opinionPersonal;         // Actualizamos la opinión personal del modal con la opinión personal del anime encontrado.
+    // 3. Función para los eventos del modal (Recibe el catálogo para buscar)
+    const vincularEventosModales = (catalogoAnimes) => {
+        const botones = document.querySelectorAll('.btn-leer-mas');
+        
+        botones.forEach(boton => {
+            boton.onclick = (e) => {
+                const id = e.currentTarget.getAttribute('data-id');
+                // Buscamos dentro del catálogo que recibimos del fetch
+                const animeEncontrado = catalogoAnimes.find(a => a.id == id);
                 
-                const linkModal = document.getElementById('modalLink');         // Seleccionamos el elemento del modal que contiene el enlace para verificar que exista antes de intentar actualizarlo, lo que nos ayudará a evitar errores si el elemento no se encuentra en el DOM.
-                    if (linkModal) {                                            // Si el elemento del enlace existe, actualizamos su atributo href con el enlace del anime encontrado para que los usuarios puedan acceder al video relacionado con ese anime directamente desde el modal.
-                        linkModal.href = animeEncontrado.link;                  // Actualizamos el atributo href del enlace del modal con el enlace del anime encontrado, lo que permitirá a los usuarios hacer clic en el enlace para ver el video relacionado con ese anime.
+                if (animeEncontrado) {
+                    document.getElementById('modalTitulo').innerText = animeEncontrado.titulo;
+                    document.getElementById('modalDescripcion').innerText = animeEncontrado.descripcion;
+                    document.getElementById('modalOpinion').innerText = animeEncontrado.opinionPersonal;
+                    
+                    const linkModal = document.getElementById('modalLink');
+                    if (linkModal) linkModal.href = animeEncontrado.link;
+
+                    const imgModal = document.getElementById('modalImagen');
+                    if (imgModal) {
+                        imgModal.src = animeEncontrado.imagen;
+                        imgModal.alt = animeEncontrado.titulo;
                     }
-
-                const imgModal = document.getElementById('modalImagen');        // Seleccionamos el elemento de la imagen del modal para verificar que exista antes de intentar actualizarlo, lo que nos ayudará a evitar errores si el elemento no se encuentra en el DOM.
-                if (imgModal) {                                                 // Si el elemento de la imagen existe, actualizamos su atributo src con la ruta de la imagen del anime encontrado y su atributo alt con el título del anime para que la imagen se muestre correctamente en el modal y tenga un texto alternativo descriptivo.
-                    imgModal.src = animeEncontrado.imagen;                      // Actualizamos el atributo src de la imagen del modal con la ruta de la imagen del anime encontrado, lo que permitirá que la imagen se muestre correctamente en el modal.
-                    imgModal.alt = animeEncontrado.titulo;                      // Actualizamos el atributo alt de la imagen del modal con el título del anime encontrado, lo que proporcionará un texto alternativo descriptivo para la imagen en caso de que no se pueda cargar o para mejorar la accesibilidad.
+                } else {
+                    console.error("No se encontró el anime con ID:", id);
                 }
-            } else {                                                            // Si no encontramos un anime que coincida con el ID obtenido del botón clickeado, mostramos un mensaje de error en la consola para ayudar a depurar el problema y entender por qué no se pudo encontrar el anime correspondiente.
-                console.error("No se encontró el anime con ID:", id);           // Este console.error es útil para identificar problemas relacionados con la búsqueda del anime en el catálogo, como por ejemplo si el ID no coincide con ningún anime o si hay un error en la estructura de datos del catálogo que impide encontrar el anime correctamente.
-            }
-        };
-    });
-};
+            };
+        });
+    };
 
-    renderizarAnimes();                                                         // Finalmente, llamamos a la función renderizarAnimes para que se ejecute al cargar la página y muestre las tarjetas de los animes en el contenedor correspondiente
+    // Iniciamos la cadena de eventos llamando al fetch
+    cargarAnimes();
 });

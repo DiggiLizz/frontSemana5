@@ -4,116 +4,10 @@
 document.addEventListener('DOMContentLoaded', () => {
     
     // 1. DEFINICIÓN DE DATOS (Inventario)
-    const catalogoFiguras = [
-        {
-            id: 1,                                                                                  // Identificador único para cada figura en el catálogo
-            titulo: "Estatua Zenki",
-            precio: 45000,                                                                          // Precio de la figura en pesos chilenos
-            imagen: "assets/imagenes/figura_zenki.jpg",                                             // Ruta de la imagen de la figura para mostrar en la tienda
-            altText: "Figura coleccionable de Zenki en postura de ataque con detalles en relieve"   // Texto alternativo para la imagen de la figura, lo que mejora la accesibilidad y proporciona una descripción de la imagen en caso de que no se pueda cargar o para usuarios con discapacidades visuales.
-        },
-        {   // no se comentará cada figura, ya que poseen la misma estructura de datos 
-            id: 2,  
-            titulo: "Estatua EVA-01 Test Type",
-            precio: 85000,
-            imagen: "assets/imagenes/figura_eca01.webp",
-            altText: "Estatua metálica del EVA-01 de Evangelion sobre base de NERV"
-        },
-        {
-            id: 3,
-            titulo: "Nendoroid Hornet - Silksong",
-            precio: 35000,
-            imagen: "assets/imagenes/figura_hornet.webp",
-            altText: "Figura articulada Nendoroid de Hornet con su aguja y accesorios"
-        },
-        {
-            id: 4,
-            titulo: "Set Cartas Estan Arrestados",
-            precio: 55000,
-            imagen: "assets/imagenes/figura_police.webp",
-            altText: "Cartas coleccionables de Miyuki Kobayakawa en uniforme de policía con ilustraciones detalladas"
-        },
-        {
-            id: 5,
-            titulo: "Figura Rei Ayanami - Plugsuit Ver.",
-            precio: 52000,
-            imagen: "assets/imagenes/figura_rei.jpg",
-            altText: "Figura de Rei Ayanami con su traje de piloto negro sentada sobre la cabeza del EVA-00"
-        },
-        {
-            id: 6,
-            titulo: "The Knight - Estatua Hollow Knight",
-            precio: 28000,
-            imagen: "assets/imagenes/figura_knight.webp",
-            altText: "Figura del Caballero de Hollow Knight sosteniendo su aguijón de hueso"
-        },
-        {
-            id: 7,
-            titulo: "Figura Articulada Kyo Kusanagi",
-            precio: 65000,
-            imagen: "assets/imagenes/figura_kyo.avif",
-            altText: "Figura de acción de Kyo Kusanagi con efectos de llamas en las manos"
-        },
-        {
-            id: 8,
-            titulo: "Link: Breath of the Wild PVC",
-            precio: 75000,
-            imagen: "assets/imagenes/figura_link_botw.webp",
-            altText: "Figura de Link apuntando con el arco ancestral en una pose dinámica"
-        },
-        {
-            id: 9,
-            titulo: "Figura Asuka Langley - Test Suit",
-            precio: 58000,
-            imagen: "assets/imagenes/figura_asuka.webp",
-            altText: "Figura de Asuka Langley con su traje de piloto naranja de las películas Rebuild"
-        },
-        {
-            id: 10,
-            titulo: "Quirrel - Miniatura Coleccionable",
-            precio: 22000,
-            imagen: "assets/imagenes/figura_quirrel.webp",
-            altText: "Pequeña figura de Quirrel de Hollow Knight con su sombrero característicos"
-        },
-        {
-            id: 11,
-            titulo: "Mai Shiranui - Edición Aniversario",
-            precio: 95000,
-            imagen: "assets/imagenes/figura_mai.jpg",
-            altText: "Estatua detallada de Mai Shiranui sosteniendo su abanico de papel"
-        },
-        {
-            id: 12,
-            titulo: "Figura Mewtwo con efectos LED",
-            precio: 110000,
-            imagen: "assets/imagenes/figura_mewtwo.avif",
-            altText: "Figura de Mewtwo lanzando una bola sombra con iluminación LED real"
-        },
-        {
-            id: 13,
-            titulo: "Terry Bogard - Classic Ver.",
-            precio: 62000,
-            imagen: "assets/imagenes/figura_terry.jpg",
-            altText: "Figura de Terry Bogard con su gorra roja característica"
-        },
-        {
-            id: 14,
-            titulo: "Zelda: Twilight Princess Edition",
-            precio: 82000,
-            imagen: "assets/imagenes/figura_zelda_tp.avif",
-            altText: "Caja con figura de Zelda en su versión de Twilight Princess con iluminación LED"
-        },
-        {
-            id: 15,
-            titulo: "Figura 'Están Arrestados'",
-            precio: 12000,
-            imagen: "assets/imagenes/figura_mini_police.webp",
-            altText: "Mini figura coleccionable de Miyuki Kobayakawa y su compañera en uniforme de policía en formato"
-        }
-    ];
+    let catalogoFiguras = []; // MODIFICADO: Ahora empieza vacío porque los datos vendrán del JSON
 
     // 2. ESTADO DEL CARRITO (Memoria volátil)
-    let carrito = [];                                                           // Array para almacenar los productos que el usuario ha agregado al carrito durante su sesión 
+    let carrito = [];                                                          // Array para almacenar los productos que el usuario ha agregado al carrito durante su sesión 
 
     // 3. Selectores del DOM
     const contenedorVentas = document.getElementById('contenedor-ventas');      // Contenedor principal donde se mostrarán las tarjetas de los productos disponibles en la tienda 
@@ -121,7 +15,24 @@ document.addEventListener('DOMContentLoaded', () => {
     const totalCarrito = document.getElementById('total-carrito');              // Elemento donde se mostrará el total acumulado del carrito 
     const formBusqueda = document.getElementById('form-busqueda');              // Formulario de búsqueda para que el usuario pueda filtrar los productos disponibles en la tienda según sus intereses
     const btnFinalizar = document.getElementById('btn-finalizar');              // Botón para finalizar la compra  
-    const btnVaciar = document.getElementById('btn-vaciar');                    // boton para vaciar el carrito
+    const btnVaciar = document.getElementById('btn-vaciar');     
+    
+    // --- NUEVA FUNCIÓN: Carga de datos desde JSON ---
+    const cargarDatosDesdeJSON = async () => {
+        try {
+            const respuesta = await fetch('ventas.json'); // Busca el archivo
+            if (!respuesta.ok) throw new Error("Error al cargar el catálogo");
+            
+            catalogoFiguras = await respuesta.json(); // Guarda los datos en nuestra variable global
+            renderizarTienda(catalogoFiguras); // Dibuja la tienda por primera vez
+            
+        } catch (error) {
+            console.error("Error:", error);
+            if (contenedorVentas) {
+                contenedorVentas.innerHTML = `<p class="text-danger">Error al cargar productos. Inténtalo más tarde.</p>`;
+            }
+        }
+    };    
     
     // 4. FUNCIONES DE RENDERIZADO
     const renderizarTienda = (productos) => {       // función que recibe una lista de productos como parámetro
@@ -285,5 +196,5 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    renderizarTienda(catalogoFiguras);                              // Carga todos los productos por primera vez apenas se abre la página.
+    cargarDatosDesdeJSON(); // Orden con "espera"                            // Carga todos los productos por primera vez apenas se abre la página.
 }); 
